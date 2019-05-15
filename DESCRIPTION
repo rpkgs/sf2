@@ -1,0 +1,25 @@
+Package: sp2
+Type: Package
+Title: Spatial Analysis tools
+Version: 0.1.0.9000
+Authors@R: person("Dongdong", "Kong", email = "kongdd.sysu@gmail.com",
+  role = c("aut", "cre"))
+Description: sp2 extends the function of sp package.
+License: GPL-3
+LazyData: TRUE
+import: 
+    RoxygenNote: 6.1.0
+Suggests: 
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown,
+    covr
+Imports:
+    magrittr,
+    stringr, purrr, 
+    maptools, sp, rgdal,
+    data.table,
+    graphics, methods
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE)
