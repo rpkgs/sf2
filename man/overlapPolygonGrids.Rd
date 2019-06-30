@@ -2,16 +2,19 @@
 % Please edit documentation in R/overlapPolygonGrids.R
 \name{overlapPolygonGrids}
 \alias{overlapPolygonGrids}
+\alias{overlapPolygonGrids2}
 \title{overlapPolygonGrids}
 \usage{
-overlapPolygonGrids(shpfile, cellsize = 1/24, show = FALSE)
+overlapPolygonGrids(shp, cellsize = 1/24, type = "big", show = FALSE)
+
+overlapPolygonGrids2(shp, cellsize = 1/24, show = FALSE)
 }
 \arguments{
-\item{shpfile}{file path of polygon shapefile}
-
 \item{cellsize}{double}
 
 \item{show}{Boolean, whether to show cliped grids?}
+
+\item{shpfile}{file path of polygon shapefile}
 }
 \value{
 \itemize{
@@ -25,6 +28,8 @@ overlapPolygonGrids
 }
 \examples{
 \dontrun{
-d <- overlapBasinGrids(shpfile, show = TRUE)
+shpfile <- "D:/Documents/Tencent Files/991810576/FileRecv/jianyu/shp/af_0000001.shp"
+shp <- rgdal::readOGR(shpfile, verbose = FALSE)
+d <- overlapPolygonGrids(shp, show = TRUE)
 }
 }

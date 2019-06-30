@@ -2,7 +2,7 @@
 #' construct SpatialGridDataFrame
 #'
 #' @param range A numeric vector, `[lat_min, lat_max, lon_min, lon_max]`
-#' @param cellsize A numeric, grid cell size.
+#' @param cellsize Numeric vector, grid cell size `[cellsize_lat, cellsize_lon]`. 
 #' @param midgrid A vector, `[midgrid_long, midgrid_lat]`. If midgrid = false, then
 #' begin point and end point locate on grid lines; If true, then begin point and
 #' end point in the middle of grid.
@@ -14,6 +14,8 @@
 #' @importFrom sp GridTopology SpatialPixelsDataFrame
 #' @export
 get_grid <- function(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84) {
+    if (length(cellsize) == 1) cellsize = rep(cellsize, 2)
+        
     lat_range  <- range[1:2]
     long_range <- range[3:4]
     # lat_range <- c(25, 40); long_range <- c(73, 105)
@@ -26,11 +28,12 @@ get_grid <- function(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84) {
     }
     
     offset  <- c(long_range[1], lat_range[1]) + cellsize/2 * (midgrid)
-    dims    <- {c(diff(long_range), diff(lat_range)) / cellsize + !midgrid} %>% 
-      ceiling()
+    
+    lat     <- seq(offset[2], lat_range[2], by = cellsize[1])
+    lon     <- seq(offset[1], long_range[2], by = cellsize[2])
+    dims    <- c(length(lon), length(lat))
 
-    grid <- GridTopology(
-        cellcentre.offset = offset,
+    grid <- GridTopology(cellcentre.offset = offset,
         cellsize = c(1, 1) * cellsize, cells.dim = dims)
     #SpatialPixelsDataFrame, other than GirdDataframe. They have a big difference!
     grid <- SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
