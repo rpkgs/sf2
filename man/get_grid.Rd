@@ -2,27 +2,37 @@
 % Please edit documentation in R/get_grid.R
 \name{get_grid}
 \alias{get_grid}
-\title{get_grid
-construct SpatialGridDataFrame}
+\alias{get_grid.lonlat}
+\alias{fix_lon}
+\title{get_grid}
 \usage{
-get_grid(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84)
+get_grid(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84,
+  fix_lon360 = FALSE)
+
+get_grid.lonlat(lon, lat, fix_lon360 = FALSE)
+
+fix_lon(x)
 }
 \arguments{
-\item{range}{A numeric vector, \code{[lat_min, lat_max, lon_min, lon_max]}}
+\item{range}{A numeric vector, \code{[lon_min, lon_max, lat_min, lat_max]}}
 
-\item{cellsize}{A numeric, grid cell size.}
+\item{cellsize}{Numeric vector, grid cell size \code{[cellsize_lon, cellsize_lat]}.}
 
-\item{midgrid}{A vector, \code{[midgrid_long, midgrid_lat]}. If midgrid = false, then
+\item{midgrid}{A vector, \code{[midgrid_lon, midgrid_lat]}. If midgrid = false, then
 begin point and end point locate on grid lines; If true, then begin point and
 end point in the middle of grid.}
 
 \item{prj}{\code{\link[sp:CRS-class]{sp::CRS-class()}} Projection.}
+
+\item{fix_lon360}{boolean}
 }
 \description{
-get_grid
 construct SpatialGridDataFrame
 }
+\details{
+The input matrix suits for \code{image}, can be directly input to \code{get_grid}.
+}
 \examples{
-range <- c(25, 40, 73, 105) # Tibetan Plateau
-grid  <- get_grid(range, cellsize = 1/12, midgrid = TRUE)
+range <- c(73, 105, 25, 40) # Tibetan Plateau
+grid  <- get_grid(range, cellsize = 1/2, midgrid = TRUE)
 }

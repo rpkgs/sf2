@@ -17,7 +17,7 @@ Suggests:
 Imports:
     magrittr,
     stringr, purrr, 
-    maptools, sp, rgdal,
+    maptools, sp, rgdal, raster, fields,
     data.table,
     graphics, methods
 VignetteBuilder: knitr
