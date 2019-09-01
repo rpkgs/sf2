@@ -5,3 +5,9 @@ inst/doc
 *.pdf
 *.txt
 *.html
+inst/examples
+
+*.zip
+*.csv
+*.7z
+*.xlsx
