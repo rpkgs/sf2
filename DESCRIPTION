@@ -19,6 +19,7 @@ Imports:
     stringr, purrr, 
     maptools, sp, rgdal, raster, fields,
     data.table,
+    matrixStats,
     graphics, methods
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

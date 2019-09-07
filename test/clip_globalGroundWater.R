@@ -55,7 +55,8 @@ df_grp <- names(gridInfo_lst) %>% {strsplit(., "-")} %>%
 lst <- foreach(file_nc = files_nc, i = icount()) %do% {
     runningId(i)
     fid <- nc_open(file_nc)
-    mat <- ncvar_get(fid, "GroundMoist")
+    varname <- names(fid$var)[1]
+    mat <- ncvar_get(fid, varname)
     dim(mat) <- c(720*360, 408)
     # d <- as.data.table(mat)
 
@@ -89,3 +90,14 @@ l2 <- listk('basin' = df[, -4], region = d_all, "global-mean" = d_1) %>%
     })
 write_list2xlsx(l2[-1], "groundwater.xlsx")
 fwrite(df, "groudwater_global_basins.csv")
+
+write_list2xlsx(lst, "gd_global_basins_P_PET.xlsx")
+
+foreach(x = lst, name = names(lst)) %do% {
+    outfile <- sprintf("%s.csv", gsub(".nc", "", name))
+    fwrite(x, outfile)
+}
+
+fids <- foreach(file = files_nc) %do% {
+    nc_open(file)
+}

@@ -6,9 +6,12 @@
 #' r <- idwST0(location, newdata, mat_z, maxdist, nmax, factor.p)
 #' }
 #' @keywords internal
+#' 
+#' @importFrom matrixStats colOrderStats colSums2
 idwST0 <- function(locations, newdata, mat_z, maxdist = Inf, nmax = NULL, 
     factor.p)
 {
+    # TODO: fix matmult_eigenMap in Ipaper
     if (is.null(nmax)) nmax <- nrow(locations)
     npixel <- nrow(coordinates(newdata))
 
