@@ -10,6 +10,11 @@
 #' begin point and end point locate on grid lines; If true, then begin point and
 #' end point in the middle of grid.
 #' @param prj [sp::CRS-class()] Projection.
+#' @param type Character, one of `mat` or `vec`.
+#' - `mat`: If `image(x)` looks correct, x can be put into grid directly: 
+#'      `grid@data <- data.frame(x = as.numeric(x))`
+#' - `vec`: If `image(x)` looks correct, x needs to `flipud`: 
+#'      `grid@data <- data.frame(x = as.numeric(Ipaper::flipud(x)))`
 #' @param fix_lon360 boolean
 #' 
 #' @examples
@@ -18,6 +23,7 @@
 #' @importFrom sp GridTopology SpatialPixelsDataFrame
 #' @export
 get_grid <- function(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84, 
+    type = "mat",
     fix_lon360 = FALSE) 
 {
     if (length(cellsize) == 1) cellsize = rep(cellsize, 2)
@@ -39,12 +45,16 @@ get_grid <- function(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84,
     lat     <- seq(offset[2], lat_range[2], by = cellsize[2])
     dims    <- c(length(lon), length(lat))
 
-    grid <- get_grid.lonlat(lon, lat)
+
     #SpatialPixelsDataFrame, other than GirdDataframe. They have a big difference!
-    # grid <- GridTopology(cellcentre.offset = offset,
-    #     cellsize = c(1, 1)*cellsize, cells.dim = dims)
-    # grid <- SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
-    #                                proj4string = prj)
+    if (type == "mat") {
+        grid <- get_grid.lonlat(lon, lat)    
+    } else if (type == "vec") {
+        grid <- GridTopology(cellcentre.offset = offset,
+        cellsize = c(1, 1)*cellsize, cells.dim = dims)
+        grid <- SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
+                                       proj4string = prj)       
+    }
     return(grid)
 }
 

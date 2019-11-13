@@ -7,7 +7,7 @@
 \title{get_grid}
 \usage{
 get_grid(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84,
-  fix_lon360 = FALSE)
+  type = "mat", fix_lon360 = FALSE)
 
 get_grid.lonlat(lon, lat, fix_lon360 = FALSE)
 
@@ -23,6 +23,14 @@ begin point and end point locate on grid lines; If true, then begin point and
 end point in the middle of grid.}
 
 \item{prj}{\code{\link[sp:CRS-class]{sp::CRS-class()}} Projection.}
+
+\item{type}{Character, one of \code{mat} or \code{vec}.
+\itemize{
+\item \code{mat}: If \code{image(x)} looks correct, x can be put into grid directly:
+\code{grid@data <- data.frame(x = as.numeric(x))}
+\item \code{vec}: If \code{image(x)} looks correct, x needs to \code{flipud}:
+\code{grid@data <- data.frame(x = as.numeric(flipud(x)))}
+}}
 
 \item{fix_lon360}{boolean}
 }
