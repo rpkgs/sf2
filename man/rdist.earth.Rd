@@ -7,7 +7,7 @@
 rdist.earth(x1, x2 = NULL)
 }
 \arguments{
-\item{x1}{A position matrix \code{[lat, lon]}, degree unit.}
+\item{x1}{A position matrix \verb{[lat, lon]}, degree unit.}
 
 \item{x2}{same as x1}
 }

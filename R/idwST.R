@@ -56,7 +56,7 @@
 #' }
 #' @importFrom fields rdist rdist.earth
 #' @importFrom sp spDists
-#' @import magrittr
+#' @importFrom magrittr `%>%`
 NULL
 
 #' @rdname idwST

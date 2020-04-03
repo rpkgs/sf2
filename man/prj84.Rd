@@ -5,7 +5,9 @@
 \alias{prj84}
 \title{prj84
 Default Spatial object projection: WGS84.}
-\format{An object of class \code{CRS} of length 1.}
+\format{
+An object of class \code{CRS} of length 1.
+}
 \usage{
 prj84
 }

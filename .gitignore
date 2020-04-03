@@ -11,3 +11,4 @@ inst/examples
 *.csv
 *.7z
 *.xlsx
+R/temp

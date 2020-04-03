@@ -6,11 +6,23 @@
 \alias{idwST.formula}
 \title{Inverse Distance Weighting (IDW) function for spatio-temporal prediction.}
 \usage{
-idwST.spatial(location, newdata, data, maxdist = Inf, nmax = NULL,
-  factor.p = 2)
+idwST.spatial(
+  location,
+  newdata,
+  data,
+  maxdist = Inf,
+  nmax = NULL,
+  factor.p = 2
+)
 
-idwST.formula(formula, location, newdata, maxdist = Inf, nmax = NULL,
-  factor.p = 2)
+idwST.formula(
+  formula,
+  location,
+  newdata,
+  maxdist = Inf,
+  nmax = NULL,
+  factor.p = 2
+)
 }
 \arguments{
 \item{location}{SpatialPointsDataFrame}
@@ -21,7 +33,7 @@ independent variables (if present) and (if locations is a formula) the
 coordinates and time with names, as defined in locations where you want to
 generate new predictions}
 
-\item{data}{data.frame, \code{[ntime, 1+nsite]}, 1th column is \code{date} object.
+\item{data}{data.frame, \verb{[ntime, 1+nsite]}, 1th column is \code{date} object.
 should contain the spatio-temporal dependent
 variable, independent variables (statics and/or dynamics), spatial coordinates
 and the time as an integer or numerical variable.}

@@ -25,7 +25,6 @@ df2sp <- function (d, formula = ~lon + lat, prj){
 #' 
 #' @param sp A SpatialPointDataFrame with the station coordinates information
 #' @param shpfile A character, shape file path.
-#' @inheritParams df2sp
 #' 
 #' @importFrom maptools readShapePoly
 #' @importFrom sp SpatialPolygons over
@@ -33,7 +32,7 @@ df2sp <- function (d, formula = ~lon + lat, prj){
 extractId <- function(sp, shpfile){
     # formula <- ~lon+lat
     # sp    <- df2sp(station, formula, prj84)
-    shp   <- readShapePoly(shpfile, proj4string = prj84)
+    shp   <- read_shp(shpfile, proj4string = prj84)
     bound <- SpatialPolygons(shp@polygons, proj4string = prj84)
     ## clipped station
     clipId <- which(!is.na(over(sp, bound))) %>% as.numeric

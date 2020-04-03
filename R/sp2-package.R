@@ -1,4 +1,4 @@
-#' @import magrittr
+#' @importFrom magrittr `%>%` set_names set_colnames
 #' @importFrom methods as
 #' @importFrom graphics plot
 #' 

@@ -6,19 +6,25 @@
 \alias{fix_lon}
 \title{get_grid}
 \usage{
-get_grid(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84,
-  type = "mat", fix_lon360 = FALSE)
+get_grid(
+  range,
+  cellsize,
+  midgrid = c(TRUE, TRUE),
+  prj = prj84,
+  type = "mat",
+  fix_lon360 = FALSE
+)
 
 get_grid.lonlat(lon, lat, fix_lon360 = FALSE)
 
 fix_lon(x)
 }
 \arguments{
-\item{range}{A numeric vector, \code{[lon_min, lon_max, lat_min, lat_max]}}
+\item{range}{A numeric vector, \verb{[lon_min, lon_max, lat_min, lat_max]}}
 
-\item{cellsize}{Numeric vector, grid cell size \code{[cellsize_lon, cellsize_lat]}.}
+\item{cellsize}{Numeric vector, grid cell size \verb{[cellsize_lon, cellsize_lat]}.}
 
-\item{midgrid}{A vector, \code{[midgrid_lon, midgrid_lat]}. If midgrid = false, then
+\item{midgrid}{A vector, \verb{[midgrid_lon, midgrid_lat]}. If midgrid = false, then
 begin point and end point locate on grid lines; If true, then begin point and
 end point in the middle of grid.}
 
@@ -29,7 +35,7 @@ end point in the middle of grid.}
 \item \code{mat}: If \code{image(x)} looks correct, x can be put into grid directly:
 \code{grid@data <- data.frame(x = as.numeric(x))}
 \item \code{vec}: If \code{image(x)} looks correct, x needs to \code{flipud}:
-\code{grid@data <- data.frame(x = as.numeric(flipud(x)))}
+\code{grid@data <- data.frame(x = as.numeric(Ipaper::flipud(x)))}
 }}
 
 \item{fix_lon360}{boolean}
