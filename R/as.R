@@ -6,6 +6,10 @@ as_SpatialPolygonsDataFrame <- function(x) {
     as(x, "SpatialPolygonsDataFrame")
 }
 
+as_SpatialPixelsDataFrame <- function(x) {
+    as(x, "SpatialPixelsDataFrame")
+}
+
 coords2_SpatialPolygons <- function(file) {
     coords <- fread(file) %>% set_colnames(c("lon", "lat"))
     Srl <- Polygons(list(Polygon(coords)), "1")

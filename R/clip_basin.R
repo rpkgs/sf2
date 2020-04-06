@@ -1,6 +1,9 @@
+#' @export
 clipbasins <- function(shp, obj_global) {
     bbox <- shp@bbox
+    cellsize <- obj_global$cellsize[1]
     range = c(floor(bbox[,1]/cellsize)*cellsize, ceiling(bbox[,2]/cellsize)*cellsize)[c(1,3,2,4)]
+
     obj_basin <- clip_rect(obj_global, range, cliped.obj=TRUE)
 
     # str(obj_basin)
@@ -19,11 +22,13 @@ clipbasins <- function(shp, obj_global) {
     area <- area(grid_cliped) / 1e6 # km^2
     fraction <- area(grid_cliped) / area(grid_full[I, ])
     info = data.table(ids, area, fraction)
-    info
+    list(info, grid, shp_grid)
 }
 
+#' @export
 clipbasins_v2 <- function(shp, obj_global) {
     bbox <- shp@bbox
+    cellsize <- obj_global$size[1]
     range = c(floor(bbox[,1]/cellsize)*cellsize, ceiling(bbox[,2]/cellsize)*cellsize)[c(1,3,2,4)]
     obj_basin <- clip_rect(obj_global, range, cliped.obj=TRUE)
 
