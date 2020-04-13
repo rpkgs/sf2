@@ -1,13 +1,21 @@
+#' @export
 as_SpatialLines <- function(x) {
     as(x, "SpatialLines")
 }
 
+#' @export 
 as_SpatialPolygonsDataFrame <- function(x) {
     as(x, "SpatialPolygonsDataFrame")
 }
 
+#' @export
 as_SpatialPixelsDataFrame <- function(x) {
     as(x, "SpatialPixelsDataFrame")
+}
+
+#' @export 
+as_SpatialGridDataFrame <- function(x) {
+    as(x, "SpatialGridDataFrame")
 }
 
 coords2_SpatialPolygons <- function(file) {
