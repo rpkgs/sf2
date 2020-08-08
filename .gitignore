@@ -12,3 +12,6 @@ inst/examples
 *.7z
 *.xlsx
 R/temp
+
+wc10/
+OUTPUT/
