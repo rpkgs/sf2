@@ -52,3 +52,4 @@ clip_rect <- function(obj, range, cliped.obj = TRUE) {
         listk(ids)
     }
 }
+
