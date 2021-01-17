@@ -2,9 +2,9 @@
 #' Default Spatial object projection: WGS84.
 #' @importFrom sp CRS
 #' @export
-prj84 <- CRS("+init=EPSG:4326")
+prj84 <- CRS("+proj=longlat +datum=WGS84 +no_defs")
 # prj84 <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
-# CRS("+init=epsg:4326")
+# prj84 <- CRS("+init=EPSG:4326")
 
 #' df2sp
 #' Convert dataframe data into SpatialPointsDataframe

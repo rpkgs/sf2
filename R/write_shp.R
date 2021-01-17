@@ -7,7 +7,7 @@
 #' @importFrom rgdal writeOGR readOGR
 #' @export
 write_shp <- function(x, file, ...) {
-    writeOGR(x, file, "shape", driver = "ESRI Shapefile", ...)
+    writeOGR(x, file, "shape", driver = "ESRI Shapefile", layer_options="ENCODING=UTF-8", ...)
 }
 
 #' read shapefile
