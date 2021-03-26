@@ -10,6 +10,12 @@ write_shp <- function(x, file, ...) {
     writeOGR(x, file, "shape", driver = "ESRI Shapefile", layer_options="ENCODING=UTF-8", ...)
 }
 
+#' @export
+#' @rdname write_shp
+write_shp_sf <- function(x, file, ...) {
+    write_sf(sf::st_as_sfc(x), file, layer_options = "ENCODING=UTF-8", ...)
+}
+
 #' read shapefile
 #' @param file The path of ESRI shapefile
 #' @param ... other parameters to [rgdal::readOGR()]

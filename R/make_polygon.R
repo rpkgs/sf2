@@ -1,7 +1,7 @@
 #' @export 
-get_polygon <- function(
+make_polygon <- function(
     range = c(70, 140, 15, 55),
-    outfile = "extent_china.shp")
+    outfile = "extent_china.shp", ...)
 {
     xmin = range[1]
     xmax = range[2]
@@ -20,5 +20,5 @@ get_polygon <- function(
     shp <- SpatialPolygonsDataFrame(spp, data = data.frame(id = seq_along(spp)), FALSE)
 
     sp::plot(shp, pbg="white")
-    write_shp(shp, outfile)
+    write_shp_sf(shp, outfile, ...)
 }

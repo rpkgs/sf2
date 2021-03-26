@@ -6,3 +6,4 @@
 ^codecov\.yml$
 ^inst/examples$
 ^inst/examples/nc$
+^OUTPUT$

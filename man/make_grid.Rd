@@ -2,9 +2,22 @@
 % Please edit documentation in R/make_grid.R
 \name{make_grid}
 \alias{make_grid}
-\title{make_grid for global basins}
+\alias{get_grid.lonlat}
+\alias{fix_lon}
+\title{make_grid}
 \usage{
-make_grid(range = c(-180, 180, -60, 90), cellsize, midgrid = c(TRUE, TRUE))
+make_grid(
+  range,
+  cellsize,
+  midgrid = c(TRUE, TRUE),
+  prj = prj84,
+  type = "mat",
+  fix_lon360 = FALSE
+)
+
+get_grid.lonlat(lon, lat, fix_lon360 = FALSE)
+
+fix_lon(x)
 }
 \arguments{
 \item{range}{A numeric vector, \verb{[lon_min, lon_max, lat_min, lat_max]}}
@@ -14,12 +27,26 @@ make_grid(range = c(-180, 180, -60, 90), cellsize, midgrid = c(TRUE, TRUE))
 \item{midgrid}{A vector, \verb{[midgrid_lon, midgrid_lat]}. If midgrid = false, then
 begin point and end point locate on grid lines; If true, then begin point and
 end point in the middle of grid.}
+
+\item{prj}{\code{\link[sp:CRS-class]{sp::CRS-class()}} Projection.}
+
+\item{type}{Character, one of \code{mat} or \code{vec}.
+\itemize{
+\item \code{mat}: If \code{image(x)} looks correct, x can be put into grid directly:
+\code{grid@data <- data.frame(x = as.numeric(x))}
+\item \code{vec}: If \code{image(x)} looks correct, x needs to \code{flipud}:
+\code{grid@data <- data.frame(x = as.numeric(Ipaper::flipud(x)))}
+}}
+
+\item{fix_lon360}{boolean}
 }
 \description{
-make_grid for global basins
+construct SpatialGridDataFrame
+}
+\details{
+The input matrix suits for \code{image}, can be directly input to \code{make_grid}.
 }
 \examples{
-\dontrun{
-r <- make_grid(range=c(-180, 180, -60, 90), cellsize=1)
-}
+range <- c(73, 105, 25, 40) # Tibetan Plateau
+grid  <- make_grid(range, cellsize = 1/2, midgrid = TRUE)
 }

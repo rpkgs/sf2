@@ -11,7 +11,7 @@ prj84 <- CRS("+proj=longlat +datum=WGS84 +no_defs")
 #' 
 #' @param d A data.frame with coordinates information
 #' @param formula ~longitude+latitude
-#' @inheritParams get_grid
+#' @inheritParams make_grid
 #' 
 #' @importFrom sp coordinates proj4string coordinates<- proj4string<-
 #' @export

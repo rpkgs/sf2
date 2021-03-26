@@ -31,9 +31,8 @@ overlapPolygonGrids <- function(shp, cellsize = 1/24, type = "big", show = FALSE
     range[c(1, 3)] %<>% {floor(./cellsize)*cellsize}
     range[c(2, 4)] %<>% {ceiling(./cellsize)*cellsize}
 
-    grid <- get_grid(range, cellsize = cellsize, prj = CRS(proj4string(shp)))
+    grid <- make_grid(range, cellsize = cellsize, prj = CRS(proj4string(shp)))
 
-    
     if (type == "big") {
         poly_grid <- as(grid, "SpatialPolygonsDataFrame")
         # browser()
