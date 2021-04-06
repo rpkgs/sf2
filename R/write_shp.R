@@ -13,7 +13,7 @@ write_shp <- function(x, file, ...) {
 #' @export
 #' @rdname write_shp
 write_shp_sf <- function(x, file, ...) {
-    write_sf(sf::st_as_sfc(x), file, layer_options = "ENCODING=UTF-8", ...)
+    write_sf(sf::st_as_sf(x), file, layer_options = "ENCODING=UTF-8", ...)
 }
 
 #' read shapefile
