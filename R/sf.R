@@ -9,10 +9,10 @@ st_dissolve <- function(x, by = NULL, ...) {
 #' @export 
 as.data.table.sf <- function(x) {
     loc = st_coord(x)
-    shp %>% st_drop_geometry() %>% cbind(loc, .)
+    x %>% st_drop_geometry() %>% cbind(loc, .)
 }
 
 #' @export 
 st_coord <- function(x) {
-    st_coordinates(shp) %>% set_colnames(c("lon", "lat"))
+    st_coordinates(x) %>% set_colnames(c("lon", "lat"))
 }
