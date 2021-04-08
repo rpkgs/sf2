@@ -1,10 +1,3 @@
-#' @export
-st_dissolve <- function(x, by = NULL, ...) {
-    x %>%
-        dplyr::group_by_at(by) %>%
-        dplyr::summarise(...)
-}
-
 #' @importFrom sf st_drop_geometry st_coordinates
 #' @export 
 as.data.table.sf <- function(x) {

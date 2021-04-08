@@ -38,9 +38,6 @@ clipbasins_v2 <- function(shp, obj_global) {
     # sp::plot(shp, add = TRUE)
     ids0 <- raster::extract(raster(grid), shp[, 1])[[1]]
 
-    browser()
-    grid_full <- as(grid, "SpatialPolygonsDataFrame")
-
     grid_full <- as(grid, "SpatialPolygonsDataFrame")
     grid_cliped <- raster::intersect(grid_full, shp)
 

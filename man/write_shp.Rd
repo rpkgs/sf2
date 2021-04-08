@@ -2,12 +2,12 @@
 % Please edit documentation in R/write_shp.R
 \name{write_shp}
 \alias{write_shp}
-\alias{write_shp_sf}
+\alias{write_shp_sp}
 \title{write and read ESRI Shapefile}
 \usage{
 write_shp(x, file, ...)
 
-write_shp_sf(x, file, ...)
+write_shp_sp(x, file, ...)
 }
 \arguments{
 \item{x}{Spatial* Object from sp package}
