@@ -1,4 +1,4 @@
-# sp2  
+# sf2  
 
 <!-- badges: start -->
 [![Travis Build Status](https://travis-ci.org/kongdd/sp2.svg?branch=master)](https://travis-ci.org/kongdd/sp2) 
@@ -9,9 +9,9 @@ Status](https://ci.appveyor.com/api/projects/status/github/kongdd/rwiki?branch=m
 [![CRAN](http://www.r-pkg.org/badges/version/rwiki)](https://cran.r-project.org/package=rwiki)
 <!-- badges: end -->
 
-`sp2` extends the function of `sp` package.
+`sf2` extends the function of `sf` package.
 
 ## Installation
 ``` r
-devtools::install_github("kongdd/sp2")
+devtools::install_github("rpkgs/sf2")
 ```
