@@ -22,7 +22,7 @@
 #' grid  <- make_grid(range, cellsize = 1/2, midgrid = TRUE)
 #' @importFrom sp GridTopology SpatialPixelsDataFrame
 #' @export
-make_grid <- function(range, cellsize, midgrid = c(TRUE, TRUE), prj = prj84, 
+make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(TRUE, TRUE), prj = prj84, 
     type = "mat",
     fix_lon360 = FALSE) 
 {
