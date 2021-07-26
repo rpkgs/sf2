@@ -1,4 +1,4 @@
 library(testthat)
-library(sp2)
+library(sf2)
 
-test_check("sp2")
+test_check("sf2")

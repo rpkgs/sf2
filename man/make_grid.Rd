@@ -7,8 +7,8 @@
 \title{make_grid}
 \usage{
 make_grid(
-  range,
-  cellsize,
+  range = c(-180, 180, -90, 90),
+  cellsize = 1,
   midgrid = c(TRUE, TRUE),
   prj = prj84,
   type = "mat",

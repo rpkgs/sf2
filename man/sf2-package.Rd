@@ -6,7 +6,7 @@
 \alias{sf2-package}
 \title{sf2: Spatial Analysis tools}
 \description{
-sp2 extends the function of sp package.
+sf2 extends the function of sp package.
 }
 \author{
 \strong{Maintainer}: Dongdong Kong \email{kongdd.sysu@gmail.com}

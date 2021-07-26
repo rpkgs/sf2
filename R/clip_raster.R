@@ -1,6 +1,6 @@
 #' @export
 write_grid <- function(obj, file) {
-    writeGDAL(obj$grid, file)
+    rgdal::writeGDAL(obj$grid, file)
 }
 
 last_lgl <- function(x) {
