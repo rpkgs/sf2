@@ -57,6 +57,13 @@ jobs:
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
+        
+      - name: "[Custom block] [macOS] Install spatial libraries"
+        if: runner.os == 'macOS'
+        run: |
+          # conflicts with gfortran from r-lib/actions when linking gcc
+          rm '/usr/local/bin/gfortran'
+          brew install pkg-config gdal proj geos
 
       - name: Restore R package cache
         uses: actions/cache@v2

@@ -17,6 +17,7 @@ Suggests:
 Imports:
     magrittr,
     stringr, purrr, 
+    ncdf4,
     maptools, sp, sf, rgdal, raster, terra, fields,
     data.table,
     matrixStats,

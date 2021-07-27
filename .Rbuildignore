@@ -8,3 +8,5 @@
 ^inst/examples/nc$
 ^OUTPUT$
 ^inst$
+^\.github$
+^test$

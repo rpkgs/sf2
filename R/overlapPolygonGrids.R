@@ -17,7 +17,6 @@
 #' }
 #' @importFrom rgdal readOGR
 #' @importFrom sp proj4string CRS over
-#' @importFrom data.table as.data.table
 #' @importFrom sp plot
 #' @export
 overlapPolygonGrids <- function(shp, cellsize = 1/24, type = "big", show = FALSE){
