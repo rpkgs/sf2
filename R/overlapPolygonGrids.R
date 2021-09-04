@@ -70,12 +70,7 @@ overlapPolygonGrids <- function(shp, cellsize = 1/24, type = "big", show = FALSE
 #' @export
 #' @importFrom raster intersect area
 overlapPolygonGrids2 <- function(shp, cellsize = 1/24, show = FALSE){
-
-
-    browser()
-
     # S_grid    <- raster::area(poly_grid[I_overlap, ])
-    browser()
     I  <- id[!is.na(id)]
     id <- id[I]
 

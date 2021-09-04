@@ -9,3 +9,18 @@ listk <- function (...) {
     x <- setNames(list(...), vars)
     return(x)
 }
+
+#' @export
+write_grid <- function(obj, file) {
+    rgdal::writeGDAL(obj$grid, file)
+}
+
+last_lgl <- function(x) {
+    ind <- which(x)
+    ind[length(ind)]
+}
+
+first_lgl <- function(x) {
+    ind <- which(x)
+    ind[1]
+}

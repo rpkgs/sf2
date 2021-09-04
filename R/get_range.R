@@ -7,4 +7,3 @@ get_range_shp <- function(shp, cellsize) {
     range = c(floor(bbox[, 1] / cellsize) * cellsize, ceiling(bbox[, 2] / cellsize) * cellsize)[c(1, 3, 2, 4)]
     return(range)
 }
-

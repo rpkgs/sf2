@@ -7,5 +7,7 @@ as.data.table.sf <- function(x) {
 
 #' @export 
 st_coord <- function(x) {
-    st_coordinates(x) %>% set_colnames(c("lon", "lat"))
+    st_coordinates(x) %>%
+        set_colnames(c("lon", "lat")) %>%
+        as.data.table()
 }
