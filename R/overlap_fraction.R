@@ -22,7 +22,7 @@ overlap_fraction <- function(
         poly_grid <- as_SpatialPolygonsDataFrame(grid)
 
         sp::plot(grid)
-        plot(x[,1], add = TRUE, col = "transparent")
+        sp::plot(x[,1], add = TRUE, col = "transparent")
         sp::plot(poly_grid, add = TRUE, lwd = 0.2)
     }
     if (!is.null(outfile)) rgdal::writeGDAL(grid, outfile)

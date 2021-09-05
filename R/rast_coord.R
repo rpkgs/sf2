@@ -25,6 +25,7 @@ rast_coord <- function(r, .area = TRUE) {
     # data.table(I = seq_along(lon), lon, lat)
 }
 
+#' @importFrom terra as.array
 #' @export
 rast_array <- function (r) {
     if (is.character(r)) r %<>% raster::raster()
