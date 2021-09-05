@@ -5,6 +5,7 @@ as.data.table.sf <- function(x) {
     x %>% st_drop_geometry() %>% cbind(loc, .)
 }
 
+#' @inheritParams sf::st_coordinates
 #' @export 
 st_coord <- function(x) {
     st_coordinates(x) %>%

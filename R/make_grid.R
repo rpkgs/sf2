@@ -76,24 +76,3 @@ get_grid.lonlat <- function(lon, lat, fix_lon360 = FALSE){
 
     grid
 }
-
-#' @rdname make_grid
-#' @export
-fix_lon <- function(x){
-    pos <- coordinates(x)
-    lon <- pos[, 1]
-    I   <- lon > 180
-    
-    cellsize_lon <- median(diff(sort(unique(lon))))
-
-    # fix longitude in 181-360
-    lon_range <- pos[, 1] %>% range()
-    delta1 <- 360 - diff(lon_range) - cellsize_lon # make sure cellsize equal
-    pos[I, 1] <- pos[I, 1] - 360 + delta1
-    
-    x2 <- SpatialPixelsDataFrame(
-        pos, 
-        data = x@data, 
-        proj4string = CRS(proj4string(x)))
-    x2
-}

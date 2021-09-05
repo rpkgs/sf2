@@ -16,17 +16,6 @@ write_shp_sp <- function(x, file, ...) {
     writeOGR(x, file, "shape", driver = "ESRI Shapefile", layer_options="ENCODING=UTF-8", ...)
 }
 
-#' read shapefile
-#' @param file The path of ESRI shapefile
-#' @param ... other parameters to [rgdal::readOGR()]
-#' 
-#' @export
-#' 
-#' @seealso [rgdal::readOGR()]
-read_shp <- function(file, ...) {
-    readOGR(file, verbose = FALSE, ...)
-}
-
 #' gridSaveToPoly
 #'
 #' Write spatialPixelDataframe into polygon shpfile for the convenience of
@@ -41,3 +30,4 @@ gridSaveToPoly <- function(grid, file) {
     # writePolyShape(poly, file) #, can't write prj info
     writeOGR(poly, dsn = file, layer = basename(file), driver = "ESRI Shapefile")
 }
+

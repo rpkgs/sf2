@@ -21,3 +21,7 @@ source("test/main_pkgs.R")
 
     y[id != I]
 }
+
+
+load("debug.rda")
+r_fract <- overlap_fraction(basin, 0.1) %>% as_rast()

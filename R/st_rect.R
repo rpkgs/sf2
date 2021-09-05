@@ -21,6 +21,8 @@ st_rect <- function(range, crs = st_crs(4326)){
 }
 # st_bbox(c(112, 115, 21, 23) %>% set_names(c("xmin", "xmax", "ymin", "ymax")), crs = st_crs(4326))
 
+
+
 # #' @export
 # make_polygon <- function(range = c(70, 140, 15, 55),
 #                          outfile = "extent_china.shp", ...) {
