@@ -1,36 +1,19 @@
-#' bbox[1]
-#' @export 
-brick.range <- function(array,
-                       range = c(-180, 180, -90, 90),
-                       crs = "", transpose = FALSE) {
-    brick(array,
-        xmn = range[1], xmx = range[2],
-        ymn = range[3], ymx = range[4],
-        crs = crs, transpose = transpose
-    )
-}
-
-#' @export
-nc2brick <- function(file, varname = 1L) {
-    fid <- nc_open(file)
-    lon <- ncvar_get(fid, "lon")
-    lat <- ncvar_get(fid, "lat")
-
-    cellsize_x <- diff(lon) %>% abs() %>% median()
-    cellsize_x <- diff(lat) %>% abs() %>% median()
-
-    data <- ncvar_get(nc, varname)
-
-    if (max(lon) > 180) {
-        # fix at here
-        I_lon <- c(which(lon >= 180), which(lon <= 180))
-        data <- aperm(data[I_lon, length(lat):1, ], c(2, 1, 3)) # flipud
-
-        lon <- lon[I_lon]
-        lon[lon >= 180] %<>% subtract(360)
-    }
-}
-
+# #' @export
+# nc2brick <- function(file, varname = 1L) {
+#     fid <- nc_open(file)
+#     lon <- ncvar_get(fid, "lon")
+#     lat <- ncvar_get(fid, "lat")
+#     cellsize_x <- diff(lon) %>% abs() %>% median()
+#     cellsize_x <- diff(lat) %>% abs() %>% median()
+#     data <- ncvar_get(nc, varname)
+#     if (max(lon) > 180) {
+#         # fix at here
+#         I_lon <- c(which(lon >= 180), which(lon <= 180))
+#         data <- aperm(data[I_lon, length(lat):1, ], c(2, 1, 3)) # flipud
+#         lon <- lon[I_lon]
+#         lon[lon >= 180] %<>% subtract(360)
+#     }
+# }
 fix_360.array <- function(array) {
     nlon <- dim(array)[1]
     lon <- seq(0, 360, length.out = nlon)

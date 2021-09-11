@@ -5,6 +5,9 @@
 \alias{reexports}
 \alias{st_read}
 \alias{st_write}
+\alias{res}
+\alias{rast}
+\alias{plot}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -13,5 +16,7 @@ below to see their documentation.
 
 \describe{
   \item{sf}{\code{\link[sf]{st_read}}, \code{\link[sf]{st_write}}}
+
+  \item{terra}{\code{\link[terra]{plot}}, \code{\link[terra]{rast}}, \code{\link[terra:dimensions]{res}}}
 }}
 

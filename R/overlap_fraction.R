@@ -12,6 +12,7 @@ overlap_fraction <- function(
     r_mask <- as_rast(grid)
 
     wkb <- sf::st_as_binary(sf::st_geometry(st_as_sf(x)), EWKB = TRUE)
+    #BUG: Error in x$.self$finalize() : attempt to apply non-function
     r <- sf.extract::rast_overlap(r_mask, wkb[[1]])
 
     info <- data.table(values = grid$id) %>% merge(r, all.x = TRUE)
@@ -20,7 +21,6 @@ overlap_fraction <- function(
 
     if (show) {
         poly_grid <- as_SpatialPolygonsDataFrame(grid)
-
         sp::plot(grid)
         sp::plot(x[,1], add = TRUE, col = "transparent")
         sp::plot(poly_grid, add = TRUE, lwd = 0.2)

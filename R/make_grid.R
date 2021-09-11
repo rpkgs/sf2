@@ -61,6 +61,35 @@ make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(T
 #' @export
 get_grid <- make_grid
 
+#' make_rast
+#' 
+#' @inheritParams make_grid
+#' @inheritParams terra::rast
+#' @param ... other parameters to [terra::rast()], e.g., `names`, `vals`.
+#' 
+#' @seealso [terra::rast()]
+#' @importFrom terra ext
+#' @export
+make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...) {
+    if (length(cellsize) == 1) cellsize = rep(cellsize, 2)
+    # nlon = diff(range[1:2]) / cellsize[1]
+    # nlat = diff(range[3:4]) / cellsize[2]
+    e <- ext(range[1], range[2], range[3], range[4])
+    rast(e, res = cellsize, nlyrs = nlyrs, ...)
+}
+
+# #' bbox[1]
+# #' @export 
+# brick.range <- function(array,
+#                        range = c(-180, 180, -90, 90),
+#                        crs = "", transpose = FALSE) {
+#     brick(array,
+#         xmn = range[1], xmx = range[2],
+#         ymn = range[3], ymx = range[4],
+#         crs = crs, transpose = transpose
+#     )
+# }
+
 #' @rdname make_grid
 #' @export
 get_grid.lonlat <- function(lon, lat, fix_lon360 = FALSE){

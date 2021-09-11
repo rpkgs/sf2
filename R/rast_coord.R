@@ -1,8 +1,10 @@
 #' rast_coord
 #' 
+#' @importFrom raster raster values
 #' @export
 rast_coord <- function(r, .area = TRUE) {
     if (is.character(r)) r %<>% raster::raster()
+    r %<>% raster()
     pos <- raster::coordinates(r) %>%
         cbind(values(raster::area(r)), values(r)) %>%
         set_colnames(c("lon", "lat", "area", "value")) %>%
@@ -10,7 +12,7 @@ rast_coord <- function(r, .area = TRUE) {
     
     r_temp <- r
     values(r_temp) <- 1:prod(dim(r)[1:2])
-    I_grid <- raster_array(r_temp) %>% as.numeric()
+    I_grid <- rast_array(r_temp) %>% as.numeric()
 
     nrow <- ncol(r) # because r is transposed and flipud
     pos[I_grid, ] %>%

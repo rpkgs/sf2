@@ -1,9 +1,8 @@
 #' @importFrom magrittr `%>%` `%<>%` set_names set_colnames set_rownames subtract
 #' @importFrom data.table as.data.table fread
 #' @importFrom methods as
-#' @importFrom graphics plot
-#' @importFrom stats median setNames
 #' @importFrom graphics grid
+#' @importFrom stats median setNames
 #'
 #' @importFrom ncdf4 nc_open ncvar_get
 #' @importFrom raster raster brick `values<-`
