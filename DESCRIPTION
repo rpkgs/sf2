@@ -19,10 +19,10 @@ Imports:
     stringr, purrr, 
     ncdf4,
     maptools, sp, sf, rgdal, raster, terra, fields,
-    data.table,
+    data.table, dplyr,
     matrixStats,
     graphics, methods
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

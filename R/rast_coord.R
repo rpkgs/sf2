@@ -1,6 +1,7 @@
 #' rast_coord
 #' 
 #' @importFrom raster raster values
+#' @importFrom dplyr mutate
 #' @export
 rast_coord <- function(r, .area = TRUE) {
     if (is.character(r)) r %<>% raster::raster()
@@ -32,4 +33,26 @@ rast_coord <- function(r, .area = TRUE) {
 rast_array <- function (r) {
     if (is.character(r)) r %<>% raster::raster()
     aperm(as.array(r), c(2, 1, 3)) %>% flipud()
+}
+
+reorder_name <- function (d, headvars = c("site", "date", "year", "doy", "d8", 
+    "d16"), tailvars = "") 
+{
+    names <- names(d)
+    headvars %<>% intersect(names)
+    tailvars %<>% intersect(names)
+    varnames <- c(headvars, setdiff(names, union(headvars, tailvars)), 
+        tailvars)
+    if (is.data.table(d)) {
+        d[, varnames, with = F]
+    }
+    else if (is.data.frame(d)) {
+        d[, varnames]
+    }
+    else if (is.list(d)) {
+        d[varnames]
+    }
+    else {
+        stop("Unknown data type!")
+    }
 }

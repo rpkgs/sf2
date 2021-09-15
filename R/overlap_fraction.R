@@ -1,6 +1,6 @@
 #' overlap_fraction
 #'
-#' @importFrom data.table data.table :=
+#' @importFrom data.table data.table := is.data.table
 #' @importFrom terra rast
 #' @export
 overlap_fraction <- function(
