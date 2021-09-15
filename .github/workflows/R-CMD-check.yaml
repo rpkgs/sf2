@@ -57,13 +57,6 @@ jobs:
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
-        
-      - name: "[Custom block] [macOS] Install spatial libraries"
-        if: runner.os == 'macOS'
-        run: |
-          # conflicts with gfortran from r-lib/actions when linking gcc
-          rm '/usr/local/bin/gfortran'
-          brew install pkg-config gdal proj geos
 
       - name: Restore R package cache
         uses: actions/cache@v2
@@ -101,7 +94,22 @@ jobs:
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "error", check_dir = "check")
         shell: Rscript {0}
-
+      # ------------------------------------------------------------------------
+      # upload builded package
+      - name: Build ${{ github.event.repository.name }}
+        run: |
+          pkgbuild::build(".", "check", binary = TRUE, args = c('--preclean'))
+        shell: Rscript {0}
+      
+      - name: Build upload ${{ github.event.repository.name }}
+        uses: actions/upload-artifact@main
+        with: 
+          name: ${{ github.event.repository.name }}-latest
+          path: |
+            check/*.tgz
+            check/*.zip
+            check/*.gz
+      # ------------------------------------------------------------------------
       - name: Show testthat output
         if: always()
         run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
