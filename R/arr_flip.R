@@ -10,7 +10,7 @@ flipud <- function(x, ...) {
     if (ndim == 2) {
         x[, I]    
     } else if (ndim == 3) {
-        x[,I,]
+        x[, I, , drop = FALSE]
     }
 }
 
@@ -22,7 +22,6 @@ fliplr <- function(x) {
     if (ndim == 2) {
         x[I, ]    
     } else if (ndim == 3) {
-        x[I,,]
-    } 
-    # x
+        x[I, , , drop = FALSE]
+    }
 }

@@ -28,13 +28,6 @@ rast_coord <- function(r, .area = TRUE) {
     # data.table(I = seq_along(lon), lon, lat)
 }
 
-#' @importFrom terra as.array
-#' @export
-rast_array <- function (r) {
-    if (is.character(r)) r %<>% raster::raster()
-    aperm(as.array(r), c(2, 1, 3)) %>% flipud()
-}
-
 reorder_name <- function (d, headvars = c("site", "date", "year", "doy", "d8", 
     "d16"), tailvars = "") 
 {

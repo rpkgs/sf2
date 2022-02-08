@@ -13,7 +13,7 @@ make_rast(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...)
 
 \item{nlyrs}{positive integer. Number of layers}
 
-\item{...}{other parameters to \code{\link[terra:rast]{terra::rast()}}, e.g., \code{names}, \code{vals}.}
+\item{...}{other parameters to \code{\link[terra:rast]{terra::rast()}}, e.g., names, vals.}
 }
 \description{
 make_rast

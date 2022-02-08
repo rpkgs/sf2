@@ -1,7 +1,7 @@
 Package: sf2
 Type: Package
 Title: Spatial Analysis tools
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: person("Dongdong", "Kong", email = "kongdd.sysu@gmail.com",
   role = c("aut", "cre"))
 Description: sf2 extends the function of sp package.
@@ -18,7 +18,8 @@ Imports:
     magrittr,
     stringr, purrr, 
     ncdf4,
-    maptools, sp, sf, rgdal, raster, terra, fields,
+    maptools, sp, sf, rgdal, 
+    raster, terra, fields,
     data.table, dplyr,
     matrixStats,
     graphics, methods

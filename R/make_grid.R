@@ -11,10 +11,12 @@
 #' end point in the middle of grid.
 #' @param prj [sp::CRS-class()] Projection.
 #' @param type Character, one of `mat` or `vec`.
-#' - `mat`: If `image(x)` looks correct, x can be put into grid directly: 
+#' - `base`: If `image(x)` looks correct, x can be put into grid directly: 
 #'      `grid@data <- data.frame(x = as.numeric(x))`
-#' - `vec`: If `image(x)` looks correct, x needs to `flipud`: 
+#' - `gdal`: If `image(x)` looks correct, x needs to `flipud`: 
 #'      `grid@data <- data.frame(x = as.numeric(Ipaper::flipud(x)))`
+#' In version >= 0.1.3, `c("mat", "vec")` was renamed as `c("base", "gdal")`.
+#' 
 #' @param fix_lon360 boolean
 #' 
 #' @examples
@@ -23,7 +25,7 @@
 #' @importFrom sp GridTopology SpatialPixelsDataFrame
 #' @export
 make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(TRUE, TRUE), prj = prj84, 
-    type = "mat",
+    type = "base",
     fix_lon360 = FALSE) 
 {
     if (length(cellsize) == 1) cellsize = rep(cellsize, 2)
@@ -47,9 +49,9 @@ make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(T
 
 
     #SpatialPixelsDataFrame, other than GirdDataframe. They have a big difference!
-    if (type == "mat") {
+    if (type %in% c("mat", "base")) {
         grid <- get_grid.lonlat(lon, lat)    
-    } else if (type == "vec") {
+    } else if (type %in% c("vec", "gdal")) {
         grid <- GridTopology(cellcentre.offset = offset,
         cellsize = c(1, 1)*cellsize, cells.dim = dims)
         grid <- SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
@@ -62,18 +64,19 @@ make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(T
 get_grid <- make_grid
 
 #' make_rast
-#' 
-#' @inheritParams make_grid
-#' @inheritParams terra::rast
-#' @param ... other parameters to [terra::rast()], e.g., `names`, `vals`.
-#' 
+#'
+#' @param range A numeric vector, `[lon_min, lon_max, lat_min, lat_max]`
+#' @param cellsize Numeric vector, grid cell size `[cellsize_lon, cellsize_lat]`.
+#' @param nlyrs positive integer. Number of layers
+#' @param ... other parameters to [terra::rast()], e.g., names, vals.
+#'
 #' @seealso [terra::rast()]
-#' @importFrom terra ext
+#' @importFrom terra ext rast res resample
 #' @export
 make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...) {
-    if (length(cellsize) == 1) cellsize = rep(cellsize, 2)
-    # nlon = diff(range[1:2]) / cellsize[1]
-    # nlat = diff(range[3:4]) / cellsize[2]
+    if (length(cellsize) == 1) {
+        cellsize <- rep(cellsize, 2)
+    }
     e <- ext(range[1], range[2], range[3], range[4])
     rast(e, res = cellsize, nlyrs = nlyrs, ...)
 }

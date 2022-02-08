@@ -13,7 +13,7 @@ make_grid(
   cellsize = 1,
   midgrid = c(TRUE, TRUE),
   prj = prj84,
-  type = "mat",
+  type = "base",
   fix_lon360 = FALSE
 )
 
@@ -32,10 +32,11 @@ end point in the middle of grid.}
 
 \item{type}{Character, one of \code{mat} or \code{vec}.
 \itemize{
-\item \code{mat}: If \code{image(x)} looks correct, x can be put into grid directly:
+\item \code{base}: If \code{image(x)} looks correct, x can be put into grid directly:
 \code{grid@data <- data.frame(x = as.numeric(x))}
-\item \code{vec}: If \code{image(x)} looks correct, x needs to \code{flipud}:
+\item \code{gdal}: If \code{image(x)} looks correct, x needs to \code{flipud}:
 \code{grid@data <- data.frame(x = as.numeric(Ipaper::flipud(x)))}
+In version >= 0.1.3, \code{c("mat", "vec")} was renamed as \code{c("base", "gdal")}.
 }}
 
 \item{fix_lon360}{boolean}
