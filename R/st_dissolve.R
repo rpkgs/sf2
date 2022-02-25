@@ -3,6 +3,7 @@
 #' @export st_dissolve
 st_dissolve <- function (x, by = NULL, ...) UseMethod("st_dissolve")
 
+# TODO: dissolve all features not work; 25 Feb, 2022
 #' @rdname st_dissolve
 #' @export
 st_dissolve.sf = function(x, by = NULL, ...) {
