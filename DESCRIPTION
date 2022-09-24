@@ -9,21 +9,21 @@ License: GPL-3
 LazyData: TRUE
 import: 
     RoxygenNote: 6.1.0
+Imports:
+    magrittr,
+    stringr, purrr, 
+    ncdf4,
+    maptools, sp, sf, rgdal, stars,
+    raster, terra, fields,
+    data.table, dplyr,
+    matrixStats,
+    graphics, methods
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
     rmarkdown,
     covr
-Imports:
-    magrittr,
-    stringr, purrr, 
-    ncdf4,
-    maptools, sp, sf, rgdal, 
-    raster, terra, fields,
-    data.table, dplyr,
-    matrixStats,
-    graphics, methods
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
