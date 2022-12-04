@@ -2,8 +2,7 @@
 % Please edit documentation in R/extractId.R
 \name{df2sp}
 \alias{df2sp}
-\title{df2sp
-Convert dataframe data into SpatialPointsDataframe}
+\title{df2sp}
 \usage{
 df2sp(d, formula = ~lon + lat, prj)
 }
@@ -15,6 +14,6 @@ df2sp(d, formula = ~lon + lat, prj)
 \item{prj}{\code{\link[sp:CRS-class]{sp::CRS-class()}} Projection.}
 }
 \description{
-df2sp
-Convert dataframe data into SpatialPointsDataframe
+Convert dataframe data into SpatialPointsDataframe (Deprecated! Use \code{\link[=df2sf]{df2sf()}}
+instead.)
 }

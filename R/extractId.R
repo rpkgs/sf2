@@ -7,19 +7,27 @@ prj84 <- CRS("+proj=longlat +datum=WGS84 +no_defs")
 # prj84 <- CRS("+init=EPSG:4326")
 
 #' df2sp
-#' Convert dataframe data into SpatialPointsDataframe
 #' 
-#' @param d A data.frame with coordinates information
-#' @param formula ~longitude+latitude
+#' Convert dataframe data into SpatialPointsDataframe (Deprecated! Use [df2sf()]
+#' instead.)
+#' 
+#' @param d A data.frame with coordinates information 
+#' @param formula ~longitude+latitude 
 #' @inheritParams make_grid
 #' 
 #' @importFrom sp coordinates proj4string coordinates<- proj4string<-
+#' 
 #' @export
 df2sp <- function (d, formula = ~lon + lat, prj){
     if (missing(prj)) prj <- prj84
     coordinates(d) <- formula
     proj4string(d) <- prj
     return(d)
+}
+
+#' @export
+df2sf <- function(d, coords = c("lon", "lat"), crs = 4326, ...) {
+    st_as_sf(d, coords = coords, crs = crs, ...)
 }
 
 #' extractId

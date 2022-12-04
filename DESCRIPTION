@@ -20,6 +20,7 @@ Imports:
     graphics, methods
 Suggests: 
     testthat (>= 2.1.0),
+    igraph,
     knitr,
     rmarkdown,
     covr
