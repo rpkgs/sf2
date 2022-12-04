@@ -17,3 +17,4 @@ wc10/
 OUTPUT/
 inst/shp/
 scripts
+*debug*

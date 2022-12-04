@@ -9,11 +9,11 @@ read_shp(file, ...)
 \arguments{
 \item{file}{The path of ESRI shapefile}
 
-\item{...}{other parameters to \code{\link[rgdal:readOGR]{rgdal::readOGR()}}}
+\item{...}{other parameters to \code{\link[rgdal:rgdal-deprecated]{rgdal::readOGR()}}}
 }
 \description{
 read shapefile
 }
 \seealso{
-\code{\link[rgdal:readOGR]{rgdal::readOGR()}}
+\code{\link[rgdal:rgdal-deprecated]{rgdal::readOGR()}}
 }

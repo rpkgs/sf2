@@ -8,6 +8,7 @@
 Status](https://ci.appveyor.com/api/projects/status/github/rpkgs/sf.extra?branch=master&svg=true)](https://ci.appveyor.com/project/rpkgs/sf.extra)
 [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 [![CRAN](http://www.r-pkg.org/badges/version/sf.extra)](https://cran.r-project.org/package=sf.extra)
+[![R-CMD-check](https://github.com/kongdd/sp2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kongdd/sp2/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `sf.extra` extends the function of `sf` package.
