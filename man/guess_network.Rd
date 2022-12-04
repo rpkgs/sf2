@@ -12,6 +12,12 @@ guess_network(info)
 \description{
 guess_network
 }
+\examples{
+\dontrun{
+info = shp_contains(shp)
+l_net = guess_networ(info)
+}
+}
 \references{
 https://stackoverflow.com/questions/25130462/get-disjoint-sets-from-a-list-in-r
 }

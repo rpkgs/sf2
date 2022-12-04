@@ -5,10 +5,15 @@
 #' @param info: the first two columns should be `[i, contains]`
 #' @references https://stackoverflow.com/questions/25130462/get-disjoint-sets-from-a-list-in-r
 #' 
+#' @examples 
+#' \dontrun{
+#' info = shp_contains(shp)
+#' l_net = guess_networ(info)
+#' }
 #' @export 
 guess_network <- function(info) {
   g <- igraph::graph.data.frame(info, directed = FALSE)
-  split(V(g)$name, igraph::clusters(g)$membership) %>%
+  split(igraph::V(g)$name, igraph::clusters(g)$membership) %>%
     lapply(as.numeric)
 }
 
