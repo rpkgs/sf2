@@ -16,9 +16,6 @@
     <loc>/reference/df2sp.html</loc>
   </url>
   <url>
-    <loc>/reference/extractId.html</loc>
-  </url>
-  <url>
     <loc>/reference/getPointsMODISTile.html</loc>
   </url>
   <url>
@@ -71,6 +68,9 @@
   </url>
   <url>
     <loc>/reference/st_dissolve.html</loc>
+  </url>
+  <url>
+    <loc>/reference/st_extractId.html</loc>
   </url>
   <url>
     <loc>/reference/st_range.html</loc>
