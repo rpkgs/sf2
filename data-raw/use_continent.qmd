@@ -1,0 +1,19 @@
+```{r}
+library(sf)
+library(usethis)
+
+shp_continent = read_sf("data-raw/shp/continent.shp")
+# use_data(shp_continent, overwrite = TRUE)
+```
+
+> 失败，geometry简化时有误
+```{r}
+polys = foreach(i = 1:nrow(shp_continent), icount()) %do% {
+  x = st_simplify(shp_continent[i, ], preserveTopology = FALSE, dTolerance = 5*1e3) # in meter
+} %>% do.call(rbind, .)
+
+Ipaper::write_fig({
+  plot(polys)
+}, 'Rplot.pdf', 10, 4)
+obj.size(polys)
+```

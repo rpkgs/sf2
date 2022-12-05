@@ -13,7 +13,7 @@ Imports:
     magrittr,
     stringr, purrr, 
     ncdf4,
-    maptools, sp, sf, rgdal, stars,
+    sp, sf, rgdal, stars,
     raster, terra, fields,
     data.table, dplyr,
     matrixStats,

@@ -23,12 +23,14 @@ st_area2 <- function(x) as.numeric(st_area(x))
 
 #' @importFrom sf st_contains
 #' @export 
-shp_contains <- function(shp) {
+shp_contains <- function(shp, .parallel = FALSE) {
+  `%dof%` <- ifelse(.parallel, foreach::`%dopar%`, foreach::`%do%`)
+  
   S_area <- st_area2(shp)
-
   n <- nrow(shp)
   index <- 1:n
-  info_contain <- foreach(i = index, icount()) %do%
+  
+  info_contain <- foreach(i = index, icount()) %dof%
     {
       runningId(i, 5)
       x <- shp[i, ]

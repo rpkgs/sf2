@@ -25,30 +25,42 @@ df2sp <- function (d, formula = ~lon + lat, prj){
     return(d)
 }
 
+## sf的方法
+
 #' @export
 df2sf <- function(d, coords = c("lon", "lat"), crs = 4326, ...) {
     st_as_sf(d, coords = coords, crs = crs, ...)
 }
 
-#' extractId
+#' st_extractId
 #' 
-#' @param sp A SpatialPointDataFrame with the station coordinates information
-#' @param shpfile A character, shape file path.
+#' @param x A sf point, or file path
+#' @param y A sf polygon, or file path
+#' @param plot Boolean. Whether to visualize extracted points?
+#' @param ... others passed to [sf::st_within()]
 #' 
-#' @importFrom maptools readShapePoly
-#' @importFrom sp SpatialPolygons over
+#' @importFrom sf st_within st_geometry read_sf
 #' @export
-extractId <- function(sp, shpfile){
-    # formula <- ~lon+lat
-    # sp    <- df2sp(station, formula, prj84)
-    shp   <- read_shp(shpfile, proj4string = prj84)
-    bound <- SpatialPolygons(shp@polygons, proj4string = prj84)
-    ## clipped station
-    clipId <- which(!is.na(over(sp, bound))) %>% as.numeric
+st_extractId <- function(x, y, plot = TRUE, ...) {
+    if (is.character(x)) x %<>% read_sf()
+    if (is.character(y)) y %<>% read_sf()
 
-    plot(shp, axes = T)
-    plot(sp[clipId, ], add = T)
-    clipId#return clipId
+    l = st_within(x, y, ...)
+    inds = which.notempty(l)
+
+    if (plot) {
+        plot(st_geometry(y))
+        plot(st_geometry(x), add = TRUE)
+    }
+}
+
+#' @importFrom purrr is_empty
+which.notempty <- function(x) {
+    which(!sapply(x, is_empty))
+}
+
+which.empty <- function(x) {
+    which(sapply(x, is_empty))
 }
 
 # #' get_nearGrids
