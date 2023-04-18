@@ -1,7 +1,7 @@
 Package: sf2
 Type: Package
 Title: Spatial Analysis tools
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: person("Dongdong", "Kong", email = "kongdd.sysu@gmail.com",
   role = c("aut", "cre"))
 Description: sf2 extends the function of sp package.
@@ -25,8 +25,8 @@ Suggests:
     rmarkdown,
     covr
 VignetteBuilder: knitr
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Depends: 
-    R (>= 2.10)
+    R (>= 3.6)

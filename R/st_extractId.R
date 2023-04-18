@@ -19,10 +19,10 @@ prj84 <- CRS("+proj=longlat +datum=WGS84 +no_defs")
 #' 
 #' @export
 df2sp <- function (d, formula = ~lon + lat, prj){
-    if (missing(prj)) prj <- prj84
-    coordinates(d) <- formula
-    proj4string(d) <- prj
-    return(d)
+  if (missing(prj)) prj <- prj84
+  coordinates(d) <- formula
+  proj4string(d) <- prj
+  return(d)
 }
 
 ## sf的方法
@@ -42,26 +42,18 @@ df2sf <- function(d, coords = c("lon", "lat"), crs = 4326, ...) {
 #' @importFrom sf st_within st_geometry read_sf
 #' @export
 st_extractId <- function(x, y, plot = TRUE, ...) {
-    if (is.character(x)) x %<>% read_sf()
-    if (is.character(y)) y %<>% read_sf()
+  if (is.character(x)) x %<>% read_sf()
+  if (is.character(y)) y %<>% read_sf()
 
-    l = st_within(x, y, ...)
-    inds = which.notempty(l)
+  l = st_within(x, y, ...)
+  inds = which.notempty(l)
 
-    if (plot) {
-        plot(st_geometry(y))
-        plot(st_geometry(x), add = TRUE)
-    }
+  if (plot) {
+    plot(st_geometry(y))
+    plot(st_geometry(x), add = TRUE)
+  }
 }
 
-#' @importFrom purrr is_empty
-which.notempty <- function(x) {
-    which(!sapply(x, is_empty))
-}
-
-which.empty <- function(x) {
-    which(sapply(x, is_empty))
-}
 
 # #' get_nearGrids
 # #' 

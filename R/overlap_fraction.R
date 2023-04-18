@@ -1,30 +1,39 @@
 #' overlap_fraction
-#'
-#' @importFrom data.table data.table := is.data.table
-#' @importFrom terra rast
-#' @export
+#' 
+#' @importFrom terra plot cellSize rast
+#' @importFrom exactextractr coverage_fraction
+#' @importFrom data.table as.data.table
+#' 
+#' @example R/example/ex-overlap.R
+#' 
+#' @export 
 overlap_fraction <- function(
-    x, cellsize = 0.1,
-    range = NULL, show = TRUE, outfile = NULL)
+    shp, cellsize = 0.1, range = NULL, outfile = NULL, ...)
 {
-    if (is.null(range)) range <- st_range(x, cellsize)
-    grid <- make_grid(range, cellsize)
-    r_mask <- as_rast(grid)
+  if (is.null(range)) range <- st_range(shp, cellsize)
+  grid <- make_grid(range, cellsize)
+  r_mask <- as_rast(grid)
+  r_cell <- rast(r_mask, vals = 1:prod(dim(r_mask)))
+  
+  res <- c(
+    I = r_mask,
+    cell = r_cell, 
+    fraction = coverage_fraction(r_mask, shp)[[1]], 
+    area = cellSize(r_mask, unit = "km")
+  ) %>% rast()
 
-    wkb <- sf::st_as_binary(sf::st_geometry(st_as_sf(x)), EWKB = TRUE)
-    #BUG: Error in x$.self$finalize() : attempt to apply non-function
-    r <- sf.extract::rast_overlap(r_mask, wkb[[1]])
-
-    info <- data.table(values = grid$id) %>% merge(r, all.x = TRUE)
-    info[is.na(coverage_fraction), coverage_fraction := 0]
-    grid@data <- data.table(info$coverage_fraction)
-
-    if (show) {
-        poly_grid <- as_SpatialPolygonsDataFrame(grid)
-        sp::plot(grid)
-        sp::plot(x[,1], add = TRUE, col = "transparent")
-        sp::plot(poly_grid, add = TRUE, lwd = 0.2)
-    }
-    if (!is.null(outfile)) rgdal::writeGDAL(grid, outfile)
-    grid
+  dat = as.data.table(res, xy = TRUE) %>% 
+    dplyr::rename(lon = x, lat = y) %>% 
+    dplyr::arrange(I) %>% 
+    dplyr::mutate(area2 = area * fraction)
+  
+  if (!is.null(outfile)) {
+    Ipaper::write_fig({
+      terra::plot(res)
+      # sp::plot(grid)
+      # sp::plot(shp[,1], add = TRUE, col = "transparent")
+      # sp::plot(poly_grid, add = TRUE, lwd = 0.2)
+    }, outfile)
+  }
+  dat[fraction > 0, ]
 }
