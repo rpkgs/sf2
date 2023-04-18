@@ -15,6 +15,7 @@ Imports:
     ncdf4,
     sp, sf, rgdal, stars,
     raster, terra, fields,
+    exactextractr, 
     data.table, dplyr,
     matrixStats,
     graphics, methods
