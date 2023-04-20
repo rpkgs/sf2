@@ -18,7 +18,7 @@ overlap_fraction <- function(
   res <- c(
     I = r_mask,
     cell = r_cell, 
-    fraction = coverage_fraction(r_mask, shp)[[1]], 
+    fraction = exactextractr::coverage_fraction(r_mask, shp)[[1]], 
     area = cellSize(r_mask, unit = "km")
   ) %>% rast()
 
@@ -26,14 +26,16 @@ overlap_fraction <- function(
     dplyr::rename(lon = x, lat = y) %>% 
     dplyr::arrange(I) %>% 
     dplyr::mutate(area2 = area * fraction)
+  dat = dat[fraction > 0, ]
   
   if (!is.null(outfile)) {
-    Ipaper::write_fig({
-      terra::plot(res)
-      # sp::plot(grid)
-      # sp::plot(shp[,1], add = TRUE, col = "transparent")
-      # sp::plot(poly_grid, add = TRUE, lwd = 0.2)
-    }, outfile)
+    Ipaper::write_fig({terra::plot(res)}, outfile)
+
+    vals = nctools::ncread_cmip(fin, ntime = 1)$data[[1]] # array
+    d = cbind(dat[, .(lon, lat, I)], value = vals[dat$I])
+    p = ggplot2::ggplot(d, aes(lon, lat)) +
+      ggplot2::geom_raster(aes(fill = value))
+    Ipaper::write_fig(p, "temp.pdf", show = F)
   }
-  dat[fraction > 0, ]
+  dat
 }
