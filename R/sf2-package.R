@@ -16,9 +16,10 @@
 NULL
 
 .onLoad <- function(libname, pkgname) {
-    if (getRversion() >= "2.15.1") {
-        utils::globalVariables(c(
-            "."
-        ))
-    }
+  if (getRversion() >= "2.15.1") {
+    utils::globalVariables(c(
+      "."
+    ))
+  }
+  options("rgdal_show_exportToProj4_warnings" = "none")
 }
