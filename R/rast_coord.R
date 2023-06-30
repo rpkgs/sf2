@@ -28,6 +28,7 @@ rast_coord <- function(r, .area = TRUE) {
     # data.table(I = seq_along(lon), lon, lat)
 }
 
+#' @importFrom data.table is.data.table
 reorder_name <- function (d, headvars = c("site", "date", "year", "doy", "d8", 
     "d16"), tailvars = "") 
 {
