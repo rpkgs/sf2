@@ -14,7 +14,7 @@ write_shp_sp(x, file, ...)
 
 \item{file}{The path of ESRI shapefile}
 
-\item{...}{other parameters to \code{\link[rgdal:rgdal-deprecated]{rgdal::writeOGR()}}}
+\item{...}{other parameters to \code{rgdal::writeOGR()}}
 }
 \description{
 write and read ESRI Shapefile
