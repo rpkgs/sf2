@@ -55,7 +55,6 @@
 #' r <- idwST(sp_all, data, gridclip)
 #' }
 #' @importFrom fields rdist rdist.earth
-#' @importFrom sp spDists
 #' @importFrom magrittr `%>%`
 NULL
 
@@ -87,7 +86,7 @@ idwST.formula <- function(formula, location, newdata,
 #     s0 = coordinates(newdata)
 #     if (missing(y)) 
 #         y = extractFormula(formula, data, newdata)$y
-#     D = 1/(spDists(s0, s)^idp)
+#     D = 1/(sp::spDists(s0, s)^idp)
 #     sumD = apply(D, 1, sum)
 #     D %*% y/sumD
 # }

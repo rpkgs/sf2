@@ -1,3 +1,8 @@
+#' @export
+# prj84 <- sf::st_crs(4326)
+prj84 <- sp::CRS("+proj=longlat +datum=WGS84 +no_defs")
+
+
 #' make_grid
 #' 
 #' construct SpatialGridDataFrame
@@ -22,7 +27,6 @@
 #' @examples
 #' range <- c(73, 105, 25, 40) # Tibetan Plateau
 #' grid  <- make_grid(range, cellsize = 1/2, midgrid = TRUE)
-#' @importFrom sp GridTopology SpatialPixelsDataFrame
 #' @export
 make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(TRUE, TRUE), prj = prj84, 
     type = "base",
@@ -52,9 +56,9 @@ make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(T
     if (type %in% c("mat", "base")) {
         grid <- get_grid.lonlat(lon, lat)    
     } else if (type %in% c("vec", "gdal")) {
-        grid <- GridTopology(cellcentre.offset = offset,
+        grid <- sp::GridTopology(cellcentre.offset = offset,
         cellsize = c(1, 1)*cellsize, cells.dim = dims)
-        grid <- SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
+        grid <- sp::SpatialPixelsDataFrame(grid, data = data.frame(id = seq.int(1, prod(dims))),
                                        proj4string = prj)       
     }
     return(grid)
@@ -63,48 +67,41 @@ make_grid <- function(range = c(-180, 180, -90, 90), cellsize = 1, midgrid = c(T
 #' @export
 get_grid <- make_grid
 
-#' make_rast
-#'
-#' @param range A numeric vector, `[lon_min, lon_max, lat_min, lat_max]`
-#' @param cellsize Numeric vector, grid cell size `[cellsize_lon, cellsize_lat]`.
-#' @param nlyrs positive integer. Number of layers
-#' @param ... other parameters to [terra::rast()], e.g., names, vals.
-#'
-#' @seealso [terra::rast()]
-#' @importFrom terra ext rast res resample
+#' @rdname make_grid
 #' @export
-make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...) {
-    if (length(cellsize) == 1) {
-        cellsize <- rep(cellsize, 2)
-    }
-    e <- ext(range[1], range[2], range[3], range[4])
-    rast(e, res = cellsize, nlyrs = nlyrs, ...)
+get_grid.lonlat <- function(lon, lat, fix_lon360 = FALSE) {
+  lon2 <- seq(min(lon), max(lon), length.out = length(lon))
+  lat2 <- seq(min(lat), max(lat), length.out = length(lat))
+
+  # points <- expand.grid(lon, lat)
+  points <- expand.grid(lon2, lat2)
+
+  grid <- sp::SpatialPixelsDataFrame(points,
+    data = data.frame(id = 1:nrow(points)),
+    proj4string = prj84
+  )
+  if (fix_lon360) grid %<>% fix_lon()
+  grid
 }
 
-# #' bbox[1]
-# #' @export 
-# brick.range <- function(array,
-#                        range = c(-180, 180, -90, 90),
-#                        crs = "", transpose = FALSE) {
-#     brick(array,
-#         xmn = range[1], xmx = range[2],
-#         ymn = range[3], ymx = range[4],
-#         crs = crs, transpose = transpose
-#     )
-# }
 
 #' @rdname make_grid
 #' @export
-get_grid.lonlat <- function(lon, lat, fix_lon360 = FALSE){
-    lon2  <- seq(min(lon), max(lon), length.out = length(lon))
-    lat2  <- seq(min(lat), max(lat), length.out = length(lat))
+fix_lon <- function(x) {
+  pos <- coordinates(x)
+  lon <- pos[, 1]
+  I <- lon > 180
 
-    # points <- expand.grid(lon, lat)
-    points <- expand.grid(lon2, lat2)
+  cellsize_lon <- median(diff(sort(unique(lon))))
 
-    grid <- SpatialPixelsDataFrame(points, data = data.frame(id = 1:nrow(points)), 
-        proj4string = prj84)
-    if (fix_lon360) grid %<>% fix_lon()
+  # fix longitude in 181-360
+  lon_range <- pos[, 1] %>% range()
+  delta1 <- 360 - diff(lon_range) - cellsize_lon # make sure cellsize equal
+  pos[I, 1] <- pos[I, 1] - 360 + delta1
 
-    grid
+  sp::SpatialPixelsDataFrame(
+    pos,
+    data = x@data,
+    proj4string = CRS(proj4string(x))
+  )
 }

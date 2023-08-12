@@ -12,7 +12,6 @@ terra::res
 #' @export
 terra::rast
 
-#' @importFrom sp plot
 #' @importFrom terra plot
 #' @export
 terra::plot

@@ -13,7 +13,7 @@ Imports:
     magrittr,
     stringr, purrr, 
     ncdf4,
-    sp, sf, stars,
+    sf, stars,
     raster, terra, fields,
     exactextractr, 
     data.table, dplyr,
@@ -22,7 +22,7 @@ Imports:
 Suggests: 
     testthat (>= 2.1.0),
     igraph,
-    rgdal,
+    rgdal, sp,
     knitr,
     rmarkdown,
     covr

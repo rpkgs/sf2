@@ -18,3 +18,4 @@ OUTPUT/
 inst/shp/
 scripts
 *debug*
+*.qmd

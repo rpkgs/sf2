@@ -13,6 +13,7 @@ overlap_fraction <- function(
   if (is.null(range)) range <- st_range(shp, cellsize)
   grid <- make_grid(range, cellsize)
   r_mask <- as_rast(grid)
+  
   r_cell <- rast(r_mask, vals = 1:prod(dim(r_mask)))
   
   res <- c(
