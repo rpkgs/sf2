@@ -13,9 +13,6 @@
     <loc>/index.html</loc>
   </url>
   <url>
-    <loc>/reference/df2sp.html</loc>
-  </url>
-  <url>
     <loc>/reference/getPointsMODISTile.html</loc>
   </url>
   <url>
@@ -37,9 +34,6 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/make_grid.html</loc>
-  </url>
-  <url>
     <loc>/reference/make_rast.html</loc>
   </url>
   <url>
@@ -47,9 +41,6 @@
   </url>
   <url>
     <loc>/reference/overlap_fraction.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prj84.html</loc>
   </url>
   <url>
     <loc>/reference/rast_coord.html</loc>
