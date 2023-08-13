@@ -78,6 +78,58 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rpkgs/sf2"</span><span class="op">)</span></span></code></pre></div>
+<p><u><strong>Table1.</strong> 空间数据中数据排序要求。</u></p>
+<table class="table">
+<colgroup>
+<col width="41%">
+<col width="5%">
+<col width="11%">
+<col width="41%">
+</colgroup>
+<thead><tr class="header">
+<th>函数</th>
+<th>数据名称</th>
+<th>数据格式</th>
+<th>其他说明</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>image, fileds::image.plot, lattice::levelplot</td>
+<td>mat_base</td>
+<td><code>[lon, lat]</code></td>
+<td>
+<code>mat_base</code> to <code>mat_rast</code>:<br><code>t() %&gt;% fliplr()</code>, <code>flipud() %&gt;% t()</code>
+</td>
+</tr>
+<tr class="even">
+<td>raster::raster, terra::rast<br>raster::as.array</td>
+<td>mat_rast</td>
+<td><code>[rev(lat), lon]</code></td>
+<td>
+<code>mat_rast</code> to <code>mat_gdal</code>:<br><code>t() %&gt;% flipud()</code>, <code>fliplr() %&gt;% t()</code>
+</td>
+</tr>
+<tr class="odd">
+<td>g_base = sf2::make_grid(type = “base”), <code>default type</code>
+</td>
+<td>mat_base</td>
+<td><code>[lon, lat]</code></td>
+<td>
+<strong>优势：</strong><br>(1) lon、lat都是按照从小到大进行排列，符合常规习惯；<br> (2) 此种格式，R语言基础绘图可以正常出图<br><br><strong>劣势：</strong><br>与所有空间数据R包相悖。</td>
+</tr>
+<tr class="even">
+<td>(a) g_gdal = sf2::make_grid(type = “gdal”), <br>(b) rgdal、sp、terra、raster的计算函数返回的均是这种数据排列格式，<br>如：raster::values, raster::area, terra::values, terra::as.data.frame，他们是按照g_gdal排序格式，与其构造函数中数据排序无关。<br>(c) <strong>terra::writeCDF保存的nc文件</strong>, ncdf4::ncvar_get获取的array。</td>
+<td>mat_gdal</td>
+<td><code>[lon, rev(lat)]</code></td>
+<td>
+<code>mat_base</code> to <code>mat_gdal</code>:<br>flipud()<br><br><code>mat_rast</code> to <code>mat_gdal</code>:<br><code><a href="https://rdrr.io/r/base/t.html" class="external-link">t()</a></code>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：<code>g_mat</code>转化为raster::raster或terra::rast之后，则按照新的数据格式排列数据。</p>
+</blockquote>
 </div>
 </div>
   </div>
