@@ -144,9 +144,7 @@ lon、lat都是按照从小到大进行排列，符合常规习惯；<br> (2)
 此种格式，R语言基础绘图可以正常出图<br><br><strong>劣势：</strong><br>与所有空间数据R包相悖。</td>
 </tr>
 <tr class="even">
-<td>
-<span class="math inline">\(a\)</span> g_gdal = sf2::make_grid(type
-= “gdal”), <br>(b)
+<td>(a) g_gdal = sf2::make_grid(type = “gdal”), <br>(b)
 rgdal、sp、terra、raster的计算函数返回的均是这种数据排列格式，<br>如：raster::values,
 raster::area, terra::values,
 terra::as.data.frame，他们是按照g_gdal排序格式，与其构造函数中数据排序无关。<br>(c)
