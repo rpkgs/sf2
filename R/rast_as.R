@@ -23,4 +23,4 @@ rast2SpatialGrid <- function(r, I_grid = NULL) {
 }
 
 #' @export
-as_rast <- function(x) raster::raster(x) %>% rast()
+as_rast <- function(x) rast(x)

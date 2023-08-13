@@ -12,17 +12,15 @@ import:
 Imports:
     magrittr,
     stringr, purrr, 
-    ncdf4,
     sf, stars,
-    raster, terra, fields,
+    terra, 
     exactextractr, 
     data.table, dplyr,
-    matrixStats,
     graphics, methods
 Suggests: 
     testthat (>= 2.1.0),
     igraph,
-    rgdal, sp,
+    sp,
     knitr,
     rmarkdown,
     covr

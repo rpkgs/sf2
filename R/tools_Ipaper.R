@@ -51,11 +51,6 @@ first_lgl <- function(x) {
   ind[1]
 }
 
-#' @export
-write_grid <- function(obj, file) {
-  rgdal::writeGDAL(obj$grid, file)
-}
-
 #' @importFrom purrr is_empty
 which.notempty <- function(x) {
   which(!sapply(x, is_empty))

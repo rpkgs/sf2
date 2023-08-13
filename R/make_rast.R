@@ -24,6 +24,10 @@ make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, va
 }
 
 
+rast_range <- function(r) {
+  as.vector(ext(r))
+}
+
 #' @export
 rast_cellId <- function(r) {
   dim = dim(r)[1:2]
@@ -43,26 +47,6 @@ check_rast_vals.matrix <- function(vals) {
 #' @export
 check_rast_vals.array <- function(vals) {
   image(flipud(t(vals[, , 1])))
-}
-
-#' @export
-index_mat2vec <- function(dim) {
-  dim <- dim[1:2]
-  ind <- array(1:prod(dim), dim = dim)
-  flipud(ind) %>% as.numeric()
-  # gdal: [lon, rev(lat)]
-  # base: [lon, lat]
-}
-
-#' @export
-mat2vec <- function(vals) UseMethod("mat2vec", vals)
-
-#' @export
-mat2vec.array <- function(vals) {
-  perm = seq_along(dim(vals))
-  perm[2] = 1
-  perm[1] = 2
-  aperm(vals, perm) |> c()
 }
 
 #' @export

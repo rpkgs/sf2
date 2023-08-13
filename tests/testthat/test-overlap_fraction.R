@@ -1,11 +1,5 @@
 test_that("overlap_fraction works", {
-  skip_on_ci()
-
-  expect_silent({
-    # file = system.file("shp/basin_BaiHe.shp", package = "sf2")
-    # shp <- read_sf(file)
-    shp <- basin_Baihe
-    r = overlap_fraction(shp, 0.1)
-    # nrow(r) = 632
-  })
+  d = overlap_fraction(bou1_4p, 1)
+  expect_true(abs(sum(d$area2) / 1e6 -  9.490825) <= 1e-5)
+  expect_equal(nrow(d), 1140L) 
 })

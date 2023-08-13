@@ -4,8 +4,6 @@
 #' @importFrom graphics grid
 #' @importFrom stats median setNames
 #'
-#' @importFrom ncdf4 nc_open ncvar_get
-#' @importFrom raster raster brick `values<-`
 #' @keywords internal
 "_PACKAGE"
 
@@ -21,5 +19,5 @@ NULL
       "."
     ))
   }
-  options("rgdal_show_exportToProj4_warnings" = "none")
+  # options("rgdal_show_exportToProj4_warnings" = "none")
 }

@@ -54,7 +54,6 @@
 #' print('hello')
 #' r <- idwST(sp_all, data, gridclip)
 #' }
-#' @importFrom fields rdist rdist.earth
 #' @importFrom magrittr `%>%`
 NULL
 
