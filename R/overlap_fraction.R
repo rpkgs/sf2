@@ -11,9 +11,9 @@ overlap_fraction <- function(
     shp, cellsize = 0.1, range = NULL, outfile = NULL, ...)
 {
   if (is.null(range)) range <- st_range(shp, cellsize)
-  grid <- make_grid(range, cellsize)
-  r_mask <- as_rast(grid)
-  
+  # grid <- make_grid(range, cellsize)
+  # r_mask <- as_rast(grid)
+  r_mask <- make_rast(range, cellsize)
   r_cell <- rast(r_mask, vals = 1:prod(dim(r_mask)))
   
   res <- c(

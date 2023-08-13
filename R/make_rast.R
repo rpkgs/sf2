@@ -8,12 +8,27 @@
 #' @seealso [terra::rast()]
 #' @importFrom terra ext rast res resample
 #' @export
-make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...) {
-    if (length(cellsize) == 1) {
-        cellsize <- rep(cellsize, 2)
-    }
-    e <- ext(range[1], range[2], range[3], range[4])
-    rast(e, res = cellsize, nlyrs = nlyrs, ...)
+make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, vals = NULL, ...) {
+  if (length(cellsize) == 1) {
+    cellsize <- rep(cellsize, 2)
+  }
+  e <- ext(range[1], range[2], range[3], range[4])
+
+  if (is.null(vals)) {
+    r = rast(e, res = cellsize, nlyrs = nlyrs, ...)
+    values(r) = rast_cellId(r)
+    r
+  } else {
+    rast(e, res = cellsize, nlyrs = nlyrs, vals = vals, ...)
+  }
+}
+
+
+#' @export
+rast_cellId <- function(r) {
+  dim = dim(r)[1:2]
+  id = matrix(1:prod(dim), dim, byrow = TRUE) %>% fliplr()
+  mat2vec(id)
 }
 
 
@@ -22,22 +37,32 @@ check_rast_vals <- function(vals) UseMethod("check_rast_vals", vals)
 
 #' @export
 check_rast_vals.matrix <- function(vals) {
-  print("matrix")
   image(flipud(t(vals)))
 }
 
 #' @export
 check_rast_vals.array <- function(vals) {
-  print("array")
-  image(flipud(t(vals[,,1])))
+  image(flipud(t(vals[, , 1])))
 }
 
-
-#' @export 
+#' @export
 index_mat2vec <- function(dim) {
-  dim = dim[1:2]
-  ind = array(1:prod(dim), dim = dim)
-  flipud(ind) %>% as.numeric()  
+  dim <- dim[1:2]
+  ind <- array(1:prod(dim), dim = dim)
+  flipud(ind) %>% as.numeric()
+  # gdal: [lon, rev(lat)]
+  # base: [lon, lat]
+}
+
+#' @export
+mat2vec <- function(vals) UseMethod("mat2vec", vals)
+
+#' @export
+mat2vec.array <- function(vals) {
+  perm = seq_along(dim(vals))
+  perm[2] = 1
+  perm[1] = 2
+  aperm(vals, perm) |> c()
 }
 
 #' @export

@@ -11,7 +11,7 @@
 #'
 #' @export
 df2sp <- function(d, formula = ~ lon + lat, prj) {
-  if (missing(prj)) prj <- prj84
+  if (missing(prj)) prj <- get_crs()
   coordinates(d) <- formula
   proj4string(d) <- prj
   return(d)

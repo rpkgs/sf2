@@ -4,7 +4,13 @@
 \alias{make_rast}
 \title{make_rast}
 \usage{
-make_rast(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, ...)
+make_rast(
+  range = c(-180, 180, -90, 90),
+  cellsize = 1,
+  nlyrs = 1,
+  vals = NULL,
+  ...
+)
 }
 \arguments{
 \item{range}{A numeric vector, \verb{[lon_min, lon_max, lat_min, lat_max]}}

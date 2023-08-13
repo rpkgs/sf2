@@ -9,6 +9,7 @@
 extractId <- function(sp, shpfile) {
   # formula <- ~lon+lat
   # sp    <- df2sp(station, formula, prj84)
+  prj84 <- get_crs()
   shp <- read_shp(shpfile, proj4string = prj84)
   bound <- SpatialPolygons(shp@polygons, proj4string = prj84)
   ## clipped station

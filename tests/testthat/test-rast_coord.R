@@ -1,6 +1,7 @@
 test_that("rast_coord works", {
   bandnames = paste0("bands", 1:3)
-  r = make_rast(vals = seq(1, 360*180), nlyrs = 3, names = bandnames)
+  vals = rep(seq(1, 360 * 180), 3)
+  r = make_rast(vals = vals, nlyrs = 3, names = bandnames)
 
   d = rast_coord(r)
   d_1st = subset(d, value == 1)

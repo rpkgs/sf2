@@ -10,7 +10,7 @@ make_grid(
   range = c(-180, 180, -90, 90),
   cellsize = 1,
   midgrid = c(TRUE, TRUE),
-  prj = prj84,
+  prj = NULL,
   type = "base",
   fix_lon360 = FALSE
 )
@@ -49,5 +49,5 @@ The input matrix suits for \code{image}, can be directly input to \code{make_gri
 }
 \examples{
 range <- c(73, 105, 25, 40) # Tibetan Plateau
-grid  <- make_grid(range, cellsize = 1/2, midgrid = TRUE)
+grid <- make_grid(range, cellsize = 1 / 2, midgrid = TRUE)
 }
