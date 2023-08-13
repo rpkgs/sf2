@@ -6,7 +6,7 @@
 #' @param ... other parameters to [terra::rast()], e.g., names, vals.
 #'
 #' @seealso [terra::rast()]
-#' @importFrom terra ext rast res resample
+#' @importFrom terra ext rast res resample `values<-` values
 #' @export
 make_rast <- function(range = c(-180, 180, -90, 90), cellsize = 1, nlyrs = 1, vals = NULL, ...) {
   if (length(cellsize) == 1) {
