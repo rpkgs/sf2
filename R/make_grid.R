@@ -111,3 +111,20 @@ fix_lon <- function(x) {
     proj4string = CRS(proj4string(x))
   )
 }
+
+
+fix_360.array <- function(array) {
+  nlon <- dim(array)[1]
+  lon <- seq(0, 360, length.out = nlon)
+  info <- fix_360.lon(lon)
+  array[info$I_lon, , ]
+  # list(array[info$I_lon, , ]
+}
+
+fix_360.lon <- function(lon) {
+  I_lon <- c(which(lon >= 180), which(lon <= 180) %>% setdiff(1))
+  lon <- lon[I_lon]
+  lon[lon >= 180] %<>% subtract(360)
+  listk(lon, I_lon)
+  # lon
+}

@@ -7,7 +7,6 @@
 ^inst/examples$
 ^inst/examples/nc$
 ^OUTPUT$
-^inst$
 ^\.github$
 ^test$
 ^data-raw$
