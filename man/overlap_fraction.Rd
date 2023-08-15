@@ -6,6 +6,12 @@
 \usage{
 overlap_fraction(shp, cellsize = 0.1, range = NULL, outfile = NULL, ...)
 }
+\value{
+\itemize{
+\item \code{I}   : the order of \code{base}, \verb{[lon, lat]}, \code{image} works directly on it.
+\item \code{cell}: the order of \code{gdal}, \verb{[lon, rev(lat)]}, returned by \code{values(r)},
+}
+}
 \description{
 overlap_fraction
 }

@@ -4,6 +4,7 @@
 #' @importFrom exactextractr coverage_fraction
 #' @importFrom data.table as.data.table
 #' 
+#' @inherit rast_df return
 #' @example R/example/ex-overlap.R
 #' 
 #' @export 

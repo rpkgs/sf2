@@ -4,7 +4,7 @@ Title: Spatial Analysis tools
 Version: 0.1.5
 Authors@R: person("Dongdong", "Kong", email = "kongdd.sysu@gmail.com",
   role = c("aut", "cre"))
-Description: sf2 extends the function of sp package.
+Description: sf2 extends the function of sf package.
 License: GPL-3
 LazyData: TRUE
 import: 

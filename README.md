@@ -15,6 +15,8 @@ devtools::install_github("rpkgs/sf2")
 ```
 
 
+## 说明
+
 <u>**Table1.** 空间数据中数据排序要求。</u>
 
 | 函数                                                         | 数据名称 | 数据格式          | 其他说明                                                     |

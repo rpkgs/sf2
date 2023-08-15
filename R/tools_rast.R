@@ -36,9 +36,9 @@ rast_array <- function(r) {
 
 #' rast_coord
 #' 
-#' @details 
-#' - `I`: the order of `values(r)`
-#' - `cell`: the order of `values(r)`
+#' @return
+#' - `I`   : the order of `base`, `[lon, lat]`, `image` works directly on it.
+#' - `cell`: the order of `gdal`, `[lon, rev(lat)]`, returned by `values(r)`,
 #' 
 #' @importFrom dplyr mutate rename relocate
 #' @export
@@ -46,14 +46,14 @@ rast_df <- function(r, .area = TRUE, na.rm = FALSE) {
   if (is.character(r)) r %<>% terra::rast()
   if (.area && !("area" %in% names(r))) r$area <- cellSize(r, unit = "km")
   
-  r$cell = make_rast(rast_range(r), res(r))
+  r$I = make_rast(rast_range(r), res(r))
 
   nrow <- ncol(r) # because r is transposed and flipud
   as.data.table(r, xy = TRUE, na.rm = na.rm) %>%
     mutate(
-      I = 1:nrow(.),
-      col = ceiling(cell / nrow), 
-      row = cell - (col - 1) * nrow, .before = "x"
+      cell = 1:nrow(.),
+      col = ceiling(I / nrow), 
+      row = I - (col - 1) * nrow, .before = "x"
     ) %>% dplyr::relocate(I, cell, row, col) %>%
     dplyr::rename(lon = x, lat = y)
 }

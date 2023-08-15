@@ -6,12 +6,12 @@
 \usage{
 rast_df(r, .area = TRUE, na.rm = FALSE)
 }
+\value{
+\itemize{
+\item \code{I}   : the order of \code{base}, \verb{[lon, lat]}, \code{image} works directly on it.
+\item \code{cell}: the order of \code{gdal}, \verb{[lon, rev(lat)]}, returned by \code{values(r)},
+}
+}
 \description{
 rast_coord
-}
-\details{
-\itemize{
-\item \code{I}: the order of \code{values(r)}
-\item \code{cell}: the order of \code{values(r)}
-}
 }
