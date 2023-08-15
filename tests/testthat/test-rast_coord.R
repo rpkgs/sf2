@@ -4,7 +4,7 @@ test_that("rast_coord works", {
   r = make_rast(vals = vals, nlyrs = 3, names = bandnames)
 
   d = rast_coord(r)
-  d_1st = subset(d, I == 1)
+  d_1st = subset(d, cell == 1)
   expect_equal(nrow(d), 360*180)
   expect_true(with(d_1st, lon == -179.5 && lat == 89.5))
 })
