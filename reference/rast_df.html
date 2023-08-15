@@ -57,11 +57,12 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rast_df</span><span class="op">(</span><span class="va">r</span>, .area <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
-    <div id="details">
-    <h2>Details</h2>
+    <div id="value">
+    <h2>Value</h2>
     
-<ul><li><p><code>I</code>: the order of <code>values(r)</code></p></li>
-<li><p><code>cell</code>: the order of <code>values(r)</code></p></li>
+
+<ul><li><p><code>I</code>   : the order of <code>base</code>, <code>[lon, lat]</code>, <code>image</code> works directly on it.</p></li>
+<li><p><code>cell</code>: the order of <code>gdal</code>, <code>[lon, rev(lat)]</code>, returned by <code>values(r)</code>,</p></li>
 </ul></div>
 
   </div>
