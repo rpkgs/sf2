@@ -114,4 +114,5 @@ st_extractId <- function(x, y, plot = TRUE, ...) {
     plot(st_geometry(y))
     plot(st_geometry(x), add = TRUE)
   }
+  inds
 }
