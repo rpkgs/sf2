@@ -73,3 +73,20 @@ rast_dim <- function(f) {
 
   listk(lon, lat)
 }
+
+#' @export
+value2colormap <- function(x, brks, cols) {
+  col2dt <- function(cols) col2rgb(cols) %>% t() %>% as.data.table()
+  colormap = col2dt(cols)
+  ind   = findInterval(x, brks) # %>% summary()
+  colormap[ind, ] |> as.matrix()
+}
+
+#' @export
+rast2colormap <- function(r, brks, cols, fout = "out.tif") {
+  x = values(r)
+  r2 = c(r, r, r)
+  val = value2colormap(x, brks, colors)
+  values(r2) = val
+  writeRaster(r2, fout)
+}
