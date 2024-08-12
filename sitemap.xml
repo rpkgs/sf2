@@ -1,69 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/rast_values_order.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/get_RegionalMean.html</loc>
-  </url>
-  <url>
-    <loc>/reference/guess_network.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/make_grid.html</loc>
-  </url>
-  <url>
-    <loc>/reference/make_rast.html</loc>
-  </url>
-  <url>
-    <loc>/reference/overlap_fraction.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rast_df.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rdist.earth.html</loc>
-  </url>
-  <url>
-    <loc>/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>/reference/sf2-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/st_clip.html</loc>
-  </url>
-  <url>
-    <loc>/reference/st_dissolve.html</loc>
-  </url>
-  <url>
-    <loc>/reference/st_extractId.html</loc>
-  </url>
-  <url>
-    <loc>/reference/st_range.html</loc>
-  </url>
-  <url>
-    <loc>/reference/st_rect.html</loc>
-  </url>
-  <url>
-    <loc>/reference/write_shp.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/rast_values_order.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/get_RegionalMean.html</loc></url>
+<url><loc>/reference/guess_network.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/make_grid.html</loc></url>
+<url><loc>/reference/make_rast.html</loc></url>
+<url><loc>/reference/overlap_fraction.html</loc></url>
+<url><loc>/reference/rast_df.html</loc></url>
+<url><loc>/reference/rdist.earth.html</loc></url>
+<url><loc>/reference/reexports.html</loc></url>
+<url><loc>/reference/sf2-package.html</loc></url>
+<url><loc>/reference/st_clip.html</loc></url>
+<url><loc>/reference/st_dissolve.html</loc></url>
+<url><loc>/reference/st_extractId.html</loc></url>
+<url><loc>/reference/st_range.html</loc></url>
+<url><loc>/reference/st_rect.html</loc></url>
+<url><loc>/reference/write_shp.html</loc></url>
 </urlset>
+
