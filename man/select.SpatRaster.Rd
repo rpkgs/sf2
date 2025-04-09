@@ -4,7 +4,7 @@
 \alias{select.SpatRaster}
 \title{Select layers from a SpatRaster object}
 \usage{
-select.SpatRaster(.data, ...)
+\method{select}{SpatRaster}(.data, ...)
 }
 \arguments{
 \item{.data}{A SpatRaster object containing multiple layers}

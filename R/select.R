@@ -32,6 +32,7 @@
 #' r_s <- select(r, starts_with("s"))
 #' }
 #' 
+#' @importFrom dplyr select
 #' @importFrom rlang enquos expr quo_get_expr
 #' @importFrom tidyselect eval_select
 #' @importFrom terra nlyr
