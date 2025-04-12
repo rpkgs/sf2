@@ -1,11 +1,13 @@
 inst/doc
+inst/examples
+# inst/shp/
+
 .Rproj.user
 .RData
 .Rhistory
 *.pdf
 *.txt
 *.html
-inst/examples
 
 *.zip
 *.csv
@@ -15,7 +17,6 @@ R/temp
 
 wc10/
 OUTPUT/
-inst/shp/
 scripts
 *debug*
 *.qmd
