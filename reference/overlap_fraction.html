@@ -81,24 +81,15 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># shp = basin_Baihe</span></span></span>
 <span class="r-in"><span><span class="va">shp</span> <span class="op">=</span> <span class="va">bou1_4p</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'bou1_4p' not found</span>
 <span class="r-in"><span><span class="va">cellsize</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span></span>
 <span class="r-in"><span><span class="va">range</span> <span class="op">&lt;-</span> <span class="fu"><a href="st_range.html">st_range</a></span><span class="op">(</span><span class="va">shp</span>, <span class="va">cellsize</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'shp' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">=</span> <span class="fu">overlap_fraction</span><span class="op">(</span><span class="va">shp</span>, cellsize <span class="op">=</span> <span class="va">cellsize</span>, <span class="va">range</span>, outfile <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in (function (cond) .Internal(C_tryCatchHelper(addr, 1L, cond)))(structure(list(message = "object of type 'builtin' is not subsettable",     call = range[1], object = .Primitive("range")), class = c("notSubsettableError", "error", "condition"))):</span> error in evaluating the argument 'x' in selecting a method for function 'ext': object of type 'builtin' is not subsettable</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          lon   lat     I  cell     fraction     area        area2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;num&gt; &lt;num&gt; &lt;int&gt; &lt;int&gt;        &lt;num&gt;    &lt;num&gt;        &lt;num&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    1: 113.25  6.25    81 11956 1.632373e-04 3059.473   0.49941997</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    2: 113.75  6.75   207 11832 7.004493e-05 3056.512   0.21409320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    3: 113.75  7.25   332 11707 4.710106e-05 3053.325   0.14381485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    4: 112.75  7.75   455 11580 1.864005e-04 3049.911   0.56850489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    5: 113.75  7.75   457 11582 1.657153e-04 3049.911   0.50541709</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ---                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4218: 125.25 53.25 11855   230 3.228767e-01 1857.117 599.61984338</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4219: 125.75 53.25 11856   231 3.811586e-02 1857.117  70.78561569</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4220: 122.25 53.75 11974    99 2.232263e-05 1835.549   0.04097429</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4221: 123.25 53.75 11976   101 5.155858e-02 1835.549  94.63832011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4222: 123.75 53.75 11977   102 2.427474e-02 1835.549  44.55748810</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'dat' not found</span>
 </code></pre></div>
     </div>
   </div>
