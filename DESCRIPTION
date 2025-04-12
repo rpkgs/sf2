@@ -12,7 +12,7 @@ import:
 Imports:
     magrittr,
     stringr, purrr, 
-    sf, stars,
+    sf, 
     terra, 
     tidyselect,
     data.table, dplyr,
