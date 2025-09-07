@@ -30,6 +30,7 @@ cellsize = res(r)
 }
 
 # shp = basin_Baihe
+load_china()
 shp = bou1_4p
 cellsize <- 0.5
 range <- st_range(shp, cellsize)
