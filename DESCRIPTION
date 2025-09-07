@@ -12,9 +12,8 @@ import:
 Imports:
     magrittr,
     stringr, purrr, 
-    sf, 
-    terra, 
-    tidyselect,
+    terra, sf, 
+    tidyselect, rlang,
     data.table, dplyr,
     graphics, methods
 Suggests: 
